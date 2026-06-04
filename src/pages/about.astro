@@ -1,0 +1,177 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import PageHero from '~/components/veritus/PageHero.astro';
+import Section from '~/components/veritus/Section.astro';
+import SectionHeader from '~/components/veritus/SectionHeader.astro';
+import FinalCta from '~/components/veritus/FinalCta.astro';
+import ImagePanel from '~/components/veritus/ImagePanel.astro';
+import { getPermalink } from '~/utils/permalinks';
+
+const metadata = {
+  title: 'Company',
+  description:
+    'Veritus Automation is an AI automation and software systems company focused on workflows, integrations, AI-assisted work, and automated pipelines.',
+};
+
+const beliefs = [
+  ['Automation should be visible', 'Teams should understand what the system used, produced, changed, and escalated.'],
+  [
+    'Software should fit the workflow',
+    'The interface and system design should reflect the real operating process, not a generic template.',
+  ],
+  [
+    'AI should prepare work responsibly',
+    'Agents are most useful when they summarize, classify, draft, extract, and route with clear review controls.',
+  ],
+  ['Integration matters', 'Automation creates value when it connects the tools where work already happens.'],
+];
+
+const focus = [
+  [
+    'AI automation systems',
+    'Workflow layers that use AI to prepare work while keeping important decisions with the right people.',
+  ],
+  ['Custom software projects', 'Focused internal tools, dashboards, and portals for operational teams.'],
+  ['Automated pipeline solutions', 'Connected flows for intake, classification, approvals, documents, and updates.'],
+  [
+    'Tool and data integrations',
+    'Practical connections across CRMs, support queues, docs, databases, APIs, and dashboards.',
+  ],
+];
+
+const avoids = [
+  ['AI theatre', 'No vague demo that looks impressive but does not fit the business process.'],
+  ['Hidden automation', 'No important system changes without owners, review, and audit context.'],
+  ['Unclear scope', 'No broad transformation promise before a concrete first workflow is understood.'],
+  ['Template delivery', 'No generic interface if the workflow needs a purpose-built operating surface.'],
+];
+
+const standards = [
+  'Clear workflow states before implementation',
+  'Named human review points for sensitive actions',
+  'Approved data sources and update destinations',
+  'Exception routing for ambiguous cases',
+  'Evidence captured before scaling',
+];
+---
+
+<Layout metadata={metadata}>
+  <PageHero
+    eyebrow="Company"
+    title="Veritus builds calm, reliable systems for AI-powered operations."
+    subtitle="Veritus is positioned around practical automation: workflow design, software engineering, AI-assisted execution, integrations, and business processes that remain inspectable."
+    primaryText="Talk to Veritus"
+    primaryHref={getPermalink('/contact')}
+    secondaryText="Explore Solutions"
+    secondaryHref={getPermalink('/capabilities')}
+  />
+
+  <Section>
+    <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+      <SectionHeader
+        eyebrow="Point of view"
+        title="Useful automation starts with the work, not the hype."
+        subtitle="Veritus is designed for teams that need practical systems: fewer manual handoffs, clearer review, better tool coordination, and system updates that can be inspected."
+        class="mb-0"
+      />
+      <div class="grid gap-4 sm:grid-cols-2">
+        {
+          beliefs.map(([title, description]) => (
+            <article class="vt-card p-5">
+              <h2 class="text-base font-semibold text-heading">{title}</h2>
+              <p class="mt-3 text-sm leading-6 text-muted">{description}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </Section>
+
+  <Section tone="soft">
+    <div class="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-stretch">
+      <ImagePanel
+        variant="focusAreas"
+        shape="portrait"
+        alt="Tall abstract stack of AI automation, software, pipeline, and integration layers"
+      />
+      <div>
+        <SectionHeader
+          eyebrow="Focus areas"
+          title="Where Veritus concentrates."
+          subtitle="The company focuses on operational software and AI automation where tool handoffs, documents, approvals, and data movement slow teams down."
+          class="mb-8"
+        />
+        <div class="grid gap-4">
+          {
+            focus.map(([title, description]) => (
+              <div class="rounded-lg border border-gray-200 bg-white p-5 dark:border-white/10 dark:bg-white/[0.035]">
+                <h2 class="text-base font-semibold text-heading">{title}</h2>
+                <p class="mt-3 text-sm leading-6 text-muted">{description}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section>
+    <div class="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-stretch">
+      <div>
+        <SectionHeader
+          eyebrow="What Veritus avoids"
+          title="A serious automation company should be clear about restraint."
+          subtitle="The point is not to add AI everywhere. The point is to design systems that make repeated work easier to run and easier to trust."
+          class="mb-8"
+        />
+        <div class="grid gap-4 sm:grid-cols-2">
+          {
+            avoids.map(([title, description]) => (
+              <article class="vt-card p-5">
+                <h2 class="text-base font-semibold text-heading">{title}</h2>
+                <p class="mt-3 text-sm leading-6 text-muted">{description}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+      <div class="vt-panel flex flex-col justify-center bg-white p-6 dark:bg-white/[0.035] md:p-8">
+        <p class="vt-eyebrow">Quality standards</p>
+        <h2 class="text-2xl font-semibold leading-tight text-heading">Systems should be easy to inspect.</h2>
+        <p class="mt-4 text-sm leading-6 text-muted">
+          Veritus focuses on clear workflow states, named approval points, known data sources, exception routes, and
+          evidence that shows whether the system is helping.
+        </p>
+        <div class="mt-6 grid gap-3 sm:grid-cols-2">
+          {
+            standards
+              .slice(0, 4)
+              .map((item) => (
+                <div class="rounded-md border border-gray-200 bg-white px-4 py-3 text-sm font-semibold leading-6 text-heading dark:border-white/10 dark:bg-white/[0.035]">
+                  {item}
+                </div>
+              ))
+          }
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section tone="soft">
+    <div class="vt-panel bg-white p-6 dark:bg-white/[0.035] md:p-8">
+      <p class="vt-eyebrow">Why review matters</p>
+      <h2 class="mt-3 text-3xl font-semibold leading-[1.08] text-heading md:text-4xl">
+        AI can prepare work, but business systems still need human control.
+      </h2>
+      <p class="mt-5 max-w-3xl text-base leading-7 text-muted">
+        The strongest automation work keeps AI-prepared drafts, approvals, exceptions, CRM updates, and audit trails in
+        one clear flow. That is how a first workflow becomes something the team can trust and improve.
+      </p>
+    </div>
+  </Section>
+
+  <FinalCta
+    title="Build a first workflow the team can trust."
+    subtitle="Start with a single repeated process and use it to define the system, data, approval, and integration pattern."
+  />
+</Layout>

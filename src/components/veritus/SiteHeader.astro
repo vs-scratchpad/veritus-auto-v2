@@ -1,0 +1,105 @@
+---
+import Logo from '~/components/Logo.astro';
+import ToggleMenu from '~/components/common/ToggleMenu.astro';
+import ToggleTheme from '~/components/common/ToggleTheme.astro';
+import Button from './Button.astro';
+import { getHomePermalink, trimSlash } from '~/utils/permalinks';
+
+interface Link {
+  text?: string;
+  href?: string;
+}
+
+interface Action {
+  text?: string;
+  href?: string;
+}
+
+export interface Props {
+  links?: Array<Link>;
+  actions?: Array<Action>;
+  isSticky?: boolean;
+  showToggleTheme?: boolean;
+}
+
+const { links = [], actions = [], isSticky = true, showToggleTheme = true } = Astro.props;
+const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
+const primaryAction = actions[0];
+---
+
+<header
+  id="header"
+  class:list={[
+    'top-0 z-50 w-full transition-colors',
+    {
+      sticky: isSticky,
+      relative: !isSticky,
+    },
+  ]}
+  {...isSticky ? { 'data-aw-sticky-header': true } : {}}
+>
+  <div
+    class="vt-header-surface absolute inset-0 border-b border-gray-200/0 bg-page/85 backdrop-blur-md transition-colors dark:bg-[#080a0d]/80"
+  >
+  </div>
+  <div class="relative mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:px-6 lg:px-8">
+    <div class="flex min-w-0 items-center justify-between">
+      <a
+        class="inline-flex items-center rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-950/15 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-white/20 dark:focus-visible:ring-offset-black"
+        href={getHomePermalink()}
+        aria-label="Veritus home"
+      >
+        <Logo />
+      </a>
+      <div class="ml-3 flex items-center lg:hidden">
+        <ToggleMenu
+          class="group inline-flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-950/15 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:border-white/10 dark:bg-white/5 dark:text-white dark:focus-visible:ring-white/20 dark:focus-visible:ring-offset-black"
+        />
+      </div>
+    </div>
+
+    <nav
+      class="hidden w-full items-start overflow-y-auto overflow-x-hidden px-5 py-8 lg:mx-6 lg:flex lg:w-auto lg:items-center lg:overflow-visible lg:px-0 lg:py-0"
+      aria-label="Main navigation"
+    >
+      <ul
+        class="flex w-full flex-col gap-1 text-base font-medium lg:w-auto lg:flex-row lg:items-center lg:gap-1 lg:text-sm"
+      >
+        {
+          links.map(({ text, href }) => (
+            <li>
+              <a
+                class:list={[
+                  'block rounded-full px-4 py-3 text-gray-700 transition duration-200 hover:bg-gray-100 hover:text-gray-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-950/10 focus-visible:ring-offset-1 focus-visible:ring-offset-white dark:text-gray-300 dark:hover:bg-white/10 dark:hover:text-white dark:focus-visible:ring-white/15 dark:focus-visible:ring-offset-black lg:py-2',
+                  { 'bg-gray-100 text-gray-950 dark:bg-white/10 dark:text-white': href === currentPath },
+                ]}
+                href={href}
+              >
+                {text}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div
+      class="hidden border-t border-gray-200 bg-page p-4 dark:border-white/10 lg:static lg:flex lg:border-0 lg:bg-transparent lg:p-0 fixed bottom-0 left-0 right-0 items-center justify-between gap-3"
+    >
+      {
+        showToggleTheme && (
+          <ToggleTheme
+            iconName="tabler:moon-stars"
+            iconClass="h-4 w-4"
+            class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-700 transition duration-200 hover:-translate-y-0.5 hover:border-gray-950 hover:text-gray-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-950/10 focus-visible:ring-offset-2 focus-visible:ring-offset-white active:outline-none dark:border-white/10 dark:bg-white/5 dark:text-gray-300 dark:hover:border-white/30 dark:hover:text-white dark:focus-visible:ring-white/20 dark:focus-visible:ring-offset-black"
+          />
+        )
+      }
+      {
+        primaryAction?.text && primaryAction?.href && (
+          <Button href={primaryAction.href} variant="primary" text={primaryAction.text} class="w-full lg:w-auto" />
+        )
+      }
+    </div>
+  </div>
+</header>

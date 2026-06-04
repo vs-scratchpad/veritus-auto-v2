@@ -1,0 +1,209 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import PageHero from '~/components/veritus/PageHero.astro';
+import Section from '~/components/veritus/Section.astro';
+import SectionHeader from '~/components/veritus/SectionHeader.astro';
+import Button from '~/components/veritus/Button.astro';
+import FinalCta from '~/components/veritus/FinalCta.astro';
+import ImagePanel from '~/components/veritus/ImagePanel.astro';
+import { getAsset, getPermalink } from '~/utils/permalinks';
+
+const metadata = {
+  title: 'Use Cases',
+  description:
+    'Representative Veritus Automation work patterns for AI workflows, software systems, document automation, support automation, sales operations, and pipelines.',
+};
+
+const workPatterns = [
+  [
+    'operations-intake',
+    'Operations intake system',
+    '/assets/images/operations-intake-routing.webp',
+    'Inbound requests arrive through forms, inboxes, or internal channels and need classification, routing, and ownership.',
+    'A queue that collects context, classifies request type, assigns owners, and prepares the next action.',
+    'Assignment rules, ambiguous routing, and priority changes stay with a reviewer.',
+    'Cycle time, reassignment rate, missing-context rate.',
+    '/contact',
+  ],
+  [
+    'document-processing',
+    'Document processing workflow',
+    '/assets/images/document-processing-system.webp',
+    'Teams repeatedly extract fields, validate exceptions, and enter approved information into business systems.',
+    'A document intake and validation flow with field extraction, exception flags, review, and export.',
+    'Reviewers confirm flagged fields, missing documents, and final record updates.',
+    'Correction rate, exception volume, document handling time.',
+    '/campaigns/document-processing',
+  ],
+  [
+    'support-triage',
+    'Support triage assistant',
+    '/assets/images/support-automation-queue.webp',
+    'Support queues need consistent triage, useful draft responses, and policy-aware escalation.',
+    'A triage assistant that classifies urgency, retrieves approved context, drafts replies, and routes tickets.',
+    'Sensitive responses, escalations, and policy exceptions stay with support owners.',
+    'First-response time, draft edit rate, escalation accuracy.',
+    '/campaigns/support-automation',
+  ],
+  [
+    'sales-operations',
+    'Sales operations pipeline',
+    '/assets/images/sales-operations-crm.webp',
+    'Sales teams need cleaner inbound qualification, account summaries, and CRM activity without repeated manual updates.',
+    'A pipeline that enriches leads, summarizes account context, prepares CRM updates, and routes next steps.',
+    'Sales owners approve qualification, next action, and customer-facing notes.',
+    'Lead response time, CRM completeness, follow-up quality.',
+    '/campaigns/sales-automation',
+  ],
+  [
+    'knowledge-systems',
+    'Internal knowledge system',
+    '/assets/images/knowledge-system-retrieval.webp',
+    'Employees ask repeated process and policy questions across scattered documents and internal channels.',
+    'A knowledge assistant that answers from approved sources, cites context, and routes gaps to source owners.',
+    'Uncertain answers, missing sources, and policy-sensitive topics route to people.',
+    'Answer usefulness, unresolved questions, source coverage.',
+    '/contact',
+  ],
+  [
+    'integration-control-layer',
+    'Integration control layer',
+    '/assets/images/integration-control-surface.webp',
+    'Operations slow down when tools, data, approvals, and logs are disconnected.',
+    'A control layer that coordinates events, AI-prepared actions, approvals, updates, and audit records.',
+    'Approved update rules and exception routes remain visible to operations leaders.',
+    'Connected systems, failed handoffs, update latency.',
+    '/capabilities',
+  ],
+] as const;
+
+const placeholders = [
+  [
+    'What gets automated',
+    'Classification, context collection, draft preparation, routing, reminders, and approved updates.',
+  ],
+  [
+    'What stays human-reviewed',
+    'Customer-facing actions, sensitive record changes, ambiguous cases, and policy exceptions.',
+  ],
+  [
+    'What evidence is measured',
+    'Cycle time, correction rate, exception volume, connected systems, and owner feedback.',
+  ],
+];
+---
+
+<Layout metadata={metadata}>
+  <PageHero
+    eyebrow="Use Cases"
+    title="Example automation systems Veritus can build."
+    subtitle="These are example system patterns, not completed client work. They show the kinds of repeated business processes Veritus is built to systemize."
+    primaryText="Start a Conversation"
+    primaryHref={getPermalink('/contact')}
+    secondaryText="Explore Solutions"
+    secondaryHref={getPermalink('/capabilities')}
+  />
+
+  <Section>
+    <div class="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
+      <SectionHeader
+        eyebrow="How examples are framed"
+        title="Use cases become useful when the review point is explicit."
+        subtitle="Each pattern shows the problem, the system Veritus would build, the human review point, and the evidence worth measuring."
+        class="mb-0"
+      />
+      <ImagePanel
+        variant="governedAgent"
+        alt="Abstract governed AI agent control layer with review and audit surfaces"
+      />
+    </div>
+  </Section>
+
+  <Section tone="soft">
+    <SectionHeader
+      eyebrow="Automation patterns"
+      title="Use cases that need system thinking, not random automation."
+      subtitle="The best candidates are repeated, important, tool-heavy processes where humans still need visibility and control."
+    />
+    <div class="grid gap-4 md:grid-cols-2">
+      {
+        workPatterns.map(([id, title, image, problem, system, review, evidence, href]) => (
+          <article id={id} class="vt-card vt-card-link scroll-mt-24 p-5">
+            <div class="vt-card-media">
+              <img src={getAsset(image)} alt="" loading="lazy" decoding="async" />
+            </div>
+            <div>
+              <h2 class="text-xl font-semibold text-heading">{title}</h2>
+              <div class="mt-5 grid gap-4">
+                <div>
+                  <p class="text-sm font-semibold text-heading">Problem</p>
+                  <p class="mt-2 text-sm leading-6 text-muted">{problem}</p>
+                </div>
+                <div>
+                  <p class="text-sm font-semibold text-heading">System Veritus would build</p>
+                  <p class="mt-2 text-sm leading-6 text-muted">{system}</p>
+                </div>
+                <div class="border-t border-gray-200 pt-4 dark:border-white/10">
+                  <p class="text-sm font-semibold text-heading">Human review point</p>
+                  <p class="mt-2 text-sm leading-6 text-muted">{review}</p>
+                </div>
+                <div class="border-t border-gray-200 pt-4 dark:border-white/10">
+                  <p class="text-sm font-semibold text-heading">Evidence to measure</p>
+                  <p class="mt-2 text-sm leading-6 text-muted">{evidence}</p>
+                </div>
+              </div>
+            </div>
+            <Button href={getPermalink(href)} variant="link" text="Explore pattern" class="vt-arrow mt-6 text-sm" />
+          </article>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section>
+    <div class="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+      <SectionHeader
+        eyebrow="Operating stack"
+        title="Example systems connect the tools where work already happens."
+        subtitle="The useful work is not the image or the model alone. It is the connection between intake, context, approval, update, and measurement."
+        class="mb-0"
+      />
+      <ImagePanel
+        variant="integrationSurface"
+        alt="Abstract software pipeline connecting documents, data, dashboards, and databases"
+      />
+    </div>
+  </Section>
+
+  <Section tone="soft">
+    <div class="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+      <div>
+        <SectionHeader
+          eyebrow="How results will be measured"
+          title="Measure the workflow before making claims."
+          subtitle="Until approved client or pilot data exists, Veritus should show the evidence it would collect without inventing outcomes."
+          class="mb-8"
+        />
+        <div class="grid gap-4">
+          {
+            placeholders.map(([title, description]) => (
+              <div class="vt-card p-6">
+                <h2 class="text-lg font-semibold text-heading">{title}</h2>
+                <p class="mt-3 text-sm leading-6 text-muted">{description}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+      <ImagePanel
+        variant="auditMeasurement"
+        alt="Abstract measurement and audit trail surface with workflow evidence"
+      />
+    </div>
+  </Section>
+
+  <FinalCta
+    title="Have a workflow that looks like one of these?"
+    subtitle="Veritus can help turn the operating pattern into a clear system design and first implementation plan."
+  />
+</Layout>

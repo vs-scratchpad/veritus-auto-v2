@@ -1,0 +1,32 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import CampaignPage from '~/components/veritus/CampaignPage.astro';
+
+const metadata = {
+  title: 'AI Agent Readiness',
+  description:
+    'Veritus AI agent readiness assessment for workflow suitability, tool access, data boundaries, governance, and first automation planning.',
+};
+---
+
+<Layout metadata={metadata}>
+  <CampaignPage
+    eyebrow="AI agent readiness"
+    title="Find the workflow where an AI agent can help without hiding control."
+    subtitle="Veritus can assess candidate workflows, tool access, data quality, review needs, and the safest first path for agent-assisted operations."
+    imageVariant="governedAgent"
+    imageAlt="Abstract governed AI agent control layer with source panels, review gates, and audit surfaces"
+    outcomes={[
+      ['Workflow fit', 'Identify repeated work with clear triggers, useful context, and reviewable outcomes.'],
+      ['Control model', 'Define what the agent can read, draft, update, escalate, and explain.'],
+      ['First-use-case plan', 'Prioritize a contained workflow with clear boundaries and success evidence.'],
+    ]}
+    workflow={[
+      ['Map candidate workflows', 'Compare frequency, friction, risk, owners, source systems, and desired outcomes.'],
+      ['Define agent boundaries', 'Separate tasks the agent can prepare from actions that require human approval.'],
+      ['Plan a controlled launch', 'Set up data access, review gates, exception handling, and evaluation criteria.'],
+    ]}
+    ctaTitle="Assess readiness before building the agent."
+    ctaSubtitle="A focused readiness pass helps avoid vague automation and identify the first workflow worth implementing."
+  />
+</Layout>

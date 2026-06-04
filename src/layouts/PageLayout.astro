@@ -1,0 +1,27 @@
+---
+import Layout from '~/layouts/Layout.astro';
+import SiteHeader from '~/components/veritus/SiteHeader.astro';
+import SiteFooter from '~/components/veritus/SiteFooter.astro';
+
+import { headerData, footerData } from '~/navigation';
+
+import type { MetaData } from '~/types';
+
+export interface Props {
+  metadata?: MetaData;
+}
+
+const { metadata } = Astro.props;
+---
+
+<Layout metadata={metadata}>
+  <slot name="header">
+    <SiteHeader {...headerData} isSticky showToggleTheme />
+  </slot>
+  <main>
+    <slot />
+  </main>
+  <slot name="footer">
+    <SiteFooter {...footerData} />
+  </slot>
+</Layout>

@@ -1,0 +1,25 @@
+---
+import { twMerge } from 'tailwind-merge';
+
+export interface Props {
+  eyebrow?: string;
+  title?: string;
+  subtitle?: string;
+  align?: 'left' | 'center';
+  class?: string;
+}
+
+const {
+  eyebrow,
+  title = await Astro.slots.render('title'),
+  subtitle = await Astro.slots.render('subtitle'),
+  align = 'left',
+  class: className = '',
+} = Astro.props;
+---
+
+<div class={twMerge('mb-10 md:mb-14', align === 'center' ? 'mx-auto max-w-3xl text-center' : 'max-w-3xl', className)}>
+  {eyebrow && <p class="vt-eyebrow mb-4">{eyebrow}</p>}
+  {title && <h2 class="text-3xl font-semibold leading-[1.08] text-heading md:text-4xl" set:html={title} />}
+  {subtitle && <p class="mt-5 text-base leading-7 text-muted md:text-lg" set:html={subtitle} />}
+</div>

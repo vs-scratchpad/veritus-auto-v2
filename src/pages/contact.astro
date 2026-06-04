@@ -1,0 +1,56 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import PageHero from '~/components/veritus/PageHero.astro';
+import ContactSection from '~/components/veritus/ContactSection.astro';
+import Section from '~/components/veritus/Section.astro';
+import { getPermalink } from '~/utils/permalinks';
+
+const metadata = {
+  title: 'Contact',
+  description:
+    'Contact Veritus Automation about AI workflow design, custom software systems, automated pipelines, integrations, and human-approved automation.',
+};
+---
+
+<Layout metadata={metadata}>
+  <PageHero
+    eyebrow="Contact"
+    title="Start with the workflow you want to improve."
+    subtitle="Share the process, system, or pipeline you want to design. Veritus can help shape it into a practical automation opportunity."
+    primaryText="Share Your Workflow"
+    primaryHref="#form"
+    secondaryText="See the Process"
+    secondaryHref={getPermalink('/process')}
+  />
+
+  <ContactSection id="form" />
+
+  <Section tone="soft" containerClass="pt-0">
+    <div class="vt-panel bg-white p-6 dark:bg-white/[0.035] md:p-8">
+      <p class="vt-eyebrow">Company contact</p>
+      <div class="mt-5 grid gap-6 md:grid-cols-3">
+        <div>
+          <h2 class="text-base font-semibold text-heading">Veritus Automation</h2>
+          <p class="mt-2 text-sm leading-6 text-muted">
+            AI automation systems and software delivery for business operations.
+          </p>
+        </div>
+        <div>
+          <h2 class="text-base font-semibold text-heading">Office</h2>
+          <p class="mt-2 text-sm leading-6 text-muted">
+            1775 Tysons Boulevard<br />
+            Suite 520<br />
+            Tysons, VA 22102
+          </p>
+        </div>
+        <div>
+          <h2 class="text-base font-semibold text-heading">Response path</h2>
+          <p class="mt-2 text-sm leading-6 text-muted">
+            Share the workflow context, tools involved, and the outcome you want to improve. Veritus will respond with a
+            practical next step.
+          </p>
+        </div>
+      </div>
+    </div>
+  </Section>
+</Layout>

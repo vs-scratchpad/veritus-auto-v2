@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Veritus">
+  <style>
+    :root {
+      --mark: #070a12;
+      --accent: #0066cc;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --mark: #f8fafc;
+        --accent: #58a6ff;
+      }
+    }
+  </style>
+  <path
+    d="M14 14.5 28.8 49.2c1.2 2.8 5.2 2.8 6.4 0L50 14.5"
+    fill="none"
+    stroke="var(--mark)"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="7"
+  />
+  <circle cx="32" cy="48.5" r="3.6" fill="var(--accent)" />
+</svg>

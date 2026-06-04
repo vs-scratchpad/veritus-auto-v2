@@ -1,0 +1,81 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Button from '~/components/veritus/Button.astro';
+import AutomationVisual from '~/components/veritus/AutomationVisual.astro';
+import TrustStrip from '~/components/veritus/TrustStrip.astro';
+import IntegrationStrip from '~/components/veritus/IntegrationStrip.astro';
+import Capabilities from '~/components/veritus/Capabilities.astro';
+import ProcessShift from '~/components/veritus/ProcessShift.astro';
+import ProcessSteps from '~/components/veritus/ProcessSteps.astro';
+import UseCases from '~/components/veritus/UseCases.astro';
+import ProofMetrics from '~/components/veritus/ProofMetrics.astro';
+import FinalCta from '~/components/veritus/FinalCta.astro';
+import ContactSection from '~/components/veritus/ContactSection.astro';
+import { getPermalink } from '~/utils/permalinks';
+
+const metadata = {
+  title: 'Veritus Automation',
+  description:
+    'Veritus builds AI automation systems, custom software projects, and automated pipeline solutions for business teams.',
+  ignoreTitleTemplate: true,
+};
+---
+
+<Layout metadata={metadata}>
+  <section class="not-prose relative overflow-hidden border-b border-gray-200 bg-page dark:border-white/10">
+    <div
+      class="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#f7f8fa] via-white/70 to-transparent dark:from-[#090b0f] dark:via-[#090b0f]/55"
+    >
+    </div>
+    <div
+      class="relative mx-auto flex min-h-[calc(86svh-4rem)] max-w-7xl items-center justify-center px-5 py-[clamp(3rem,5.5vw,5.25rem)] sm:px-6 lg:px-8"
+    >
+      <div class="mx-auto max-w-4xl text-center">
+        <p class="vt-eyebrow mb-3">AI automation and software systems</p>
+        <h1 class="text-[clamp(2.5rem,5.4vw,4.25rem)] font-semibold leading-[1.03] text-heading">
+          Turn repeated business work into reliable automated systems.
+        </h1>
+        <p class="mx-auto mt-5 max-w-3xl text-lg leading-8 text-muted md:text-xl">
+          Veritus designs AI workflows, custom software, and automation pipelines that connect tools, prepare decisions,
+          route exceptions, and keep critical actions reviewable.
+        </p>
+        <div class="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
+          <Button href={getPermalink('/contact')} variant="primary" text="Start a Conversation" />
+          <Button href={getPermalink('/capabilities')} text="Explore Solutions" />
+        </div>
+
+        <a
+          href="#automation-workspace"
+          class="group mx-auto mt-[clamp(1.75rem,3.5vh,3rem)] inline-flex max-w-full items-center gap-2 rounded-full border border-gray-200 bg-white/80 px-3.5 py-2 text-sm font-medium text-muted shadow-[0_14px_44px_rgba(15,23,42,0.06)] backdrop-blur transition duration-200 hover:-translate-y-0.5 hover:border-gray-300 hover:text-heading focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-950/15 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:border-white/10 dark:bg-white/[0.045] dark:shadow-none dark:hover:border-white/20 dark:focus-visible:ring-white/20 dark:focus-visible:ring-offset-black"
+        >
+          <span class="h-2 w-2 rounded-full bg-secondary shadow-[0_0_0_4px_rgba(0,102,204,0.08)]"></span>
+          <span class="text-heading">Workspace preview</span>
+          <span class="hidden h-1 w-1 rounded-full bg-gray-300 dark:bg-white/25 sm:inline-flex"></span>
+          <span class="hidden sm:inline">Agent console, connected tools, review queue</span>
+          <span class="text-muted transition group-hover:translate-y-0.5">↓</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section
+    id="automation-workspace"
+    class="not-prose scroll-mt-20 border-b border-gray-200 bg-page dark:border-white/10"
+  >
+    <div class="mx-auto max-w-7xl px-5 py-[clamp(2.5rem,6vw,5rem)] sm:px-6 lg:px-8">
+      <p class="vt-eyebrow mb-4 text-center">Product Mockup</p>
+
+      <AutomationVisual />
+    </div>
+  </section>
+
+  <TrustStrip />
+  <IntegrationStrip />
+  <Capabilities />
+  <ProcessShift />
+  <ProcessSteps />
+  <UseCases />
+  <ProofMetrics />
+  <FinalCta />
+  <ContactSection />
+</Layout>

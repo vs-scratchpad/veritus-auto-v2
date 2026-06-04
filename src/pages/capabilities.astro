@@ -1,0 +1,192 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import PageHero from '~/components/veritus/PageHero.astro';
+import Section from '~/components/veritus/Section.astro';
+import SectionHeader from '~/components/veritus/SectionHeader.astro';
+import FinalCta from '~/components/veritus/FinalCta.astro';
+import IntegrationStrip from '~/components/veritus/IntegrationStrip.astro';
+import ImagePanel from '~/components/veritus/ImagePanel.astro';
+import { getPermalink } from '~/utils/permalinks';
+
+const metadata = {
+  title: 'Solutions',
+  description:
+    'AI workflow design, custom software systems, automated pipelines, integrations, and AI-assisted workflows from Veritus Automation.',
+};
+
+const solutionDetails = [
+  [
+    'ai-workflow-design',
+    'AI workflow design',
+    'Repeated manual work is hard to automate when ownership, decisions, and exceptions are unclear.',
+    'A workflow map, automation boundaries, approval points, and a first release plan.',
+    'Approvals, exception routing, and policy-sensitive decisions remain with named owners.',
+    'Workflow blueprint with recommended first automation scope.',
+  ],
+  [
+    'custom-software',
+    'Custom software projects',
+    'Teams outgrow spreadsheets, side-channel approvals, and tools that do not match the real process.',
+    'Internal dashboards, portals, workflow surfaces, and focused operational systems.',
+    'Users control approvals, edits, escalations, and launch criteria from the software surface.',
+    'Clickable prototype or working first version of the operating surface.',
+  ],
+  [
+    'automated-pipelines',
+    'Automated pipelines',
+    'Important work gets delayed when intake, classification, documents, approvals, and records are disconnected.',
+    'Event-driven flows that move requests through AI-prepared steps, review, and system updates.',
+    'Humans approve record changes and handle ambiguous or high-risk cases.',
+    'Pipeline map plus first connected workflow.',
+  ],
+  [
+    'integration-systems',
+    'Integration systems',
+    'Useful automation depends on tools sharing the right context at the right moment.',
+    'Connections across CRMs, support queues, documents, databases, knowledge bases, APIs, and messaging tools.',
+    'Teams control which sources are approved and which destinations can be updated.',
+    'Integration inventory with priority connection path.',
+  ],
+  [
+    'document-automation',
+    'Document automation',
+    'Document-heavy workflows create repeated extraction, validation, exception, and record-entry work.',
+    'Extraction, validation, exception routing, approval screens, and exports into business systems.',
+    'Reviewers confirm flagged fields, missing context, and final updates before records change.',
+    'Document intake and validation prototype.',
+  ],
+  [
+    'governed-ai-agents',
+    'Governed AI agents',
+    'AI demos become risky when agents can act without clear scope, review, or evidence.',
+    'Agents that summarize, classify, retrieve, draft, and prepare actions inside defined boundaries.',
+    'People approve sensitive outputs and refine agent behavior from corrections.',
+    'Agent role definition with review and audit model.',
+  ],
+] as const;
+
+const deliverables = [
+  ['Workflow blueprint', 'States, owners, handoffs, exceptions, and first automation scope.'],
+  ['System surface', 'A dashboard, queue, portal, or internal tool that makes work visible.'],
+  ['Integration layer', 'Tool connections, data movement, API handling, and update rules.'],
+  ['Review model', 'Approval steps, escalation routes, audit records, and quality checks.'],
+];
+---
+
+<Layout metadata={metadata}>
+  <PageHero
+    eyebrow="Solutions"
+    title="AI automation and software systems for operational work."
+    subtitle="Veritus helps teams turn repeated manual work, tool handoffs, document processing, and approval-heavy operations into connected systems."
+    primaryText="Discuss a Project"
+    primaryHref={getPermalink('/contact')}
+    secondaryText="See the Process"
+    secondaryHref={getPermalink('/process')}
+  />
+
+  <Section>
+    <div class="grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-center">
+      <SectionHeader
+        eyebrow="Overview"
+        title="Every solution combines process clarity, software, integration, and human review."
+        subtitle="Veritus does not start with a model demo. It starts by understanding the business workflow, then builds the software layer needed to run it."
+        class="mb-0"
+      />
+      <ImagePanel
+        variant="workflowBlueprint"
+        alt="Abstract workflow blueprint with structured states, review points, and connected automation surfaces"
+      />
+    </div>
+  </Section>
+
+  <IntegrationStrip />
+
+  <Section tone="soft">
+    <SectionHeader
+      eyebrow="What each solution includes"
+      title="What Veritus solves, builds, and leaves for people to approve."
+      subtitle="The first version should be specific enough to launch, inspect, and improve from real workflow evidence."
+    />
+    <div class="grid gap-4 md:grid-cols-2">
+      {
+        solutionDetails.map(([id, title, solves, builds, human, deliverable]) => (
+          <article id={id} class="vt-card scroll-mt-24 p-6">
+            <div class="flex items-start justify-between gap-4">
+              <h2 class="text-xl font-semibold text-heading">{title}</h2>
+              <span class="h-2.5 w-2.5 rounded-full bg-secondary" />
+            </div>
+            <div class="mt-6 grid gap-4">
+              <div>
+                <p class="text-sm font-semibold text-heading">What it solves</p>
+                <p class="mt-2 text-sm leading-6 text-muted">{solves}</p>
+              </div>
+              <div>
+                <p class="text-sm font-semibold text-heading">What Veritus builds</p>
+                <p class="mt-2 text-sm leading-6 text-muted">{builds}</p>
+              </div>
+              <div class="border-t border-gray-200 pt-4 dark:border-white/10">
+                <p class="text-sm font-semibold text-heading">What remains human-reviewed</p>
+                <p class="mt-2 text-sm leading-6 text-muted">{human}</p>
+              </div>
+              <div class="border-t border-gray-200 pt-4 dark:border-white/10">
+                <p class="text-sm font-semibold text-heading">First deliverable</p>
+                <p class="mt-2 text-sm leading-6 text-muted">{deliverable}</p>
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section>
+    <div class="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-stretch">
+      <ImagePanel
+        variant="operatingSurface"
+        shape="portrait"
+        alt="Tall abstract operating surface with workflow queues, connected tools, review checkpoints, and audit layers"
+      />
+      <div>
+        <SectionHeader
+          eyebrow="What clients receive"
+          title="Useful automation comes with a visible operating surface."
+          subtitle="A launch-ready automation project needs more than prompts. It needs a visible workflow, connected tools, and a way to inspect important actions."
+          class="mb-8"
+        />
+        <div class="grid gap-3">
+          {
+            deliverables.map(([title, description]) => (
+              <div class="rounded-lg border border-gray-200 bg-white p-4 dark:border-white/10 dark:bg-white/[0.035]">
+                <h2 class="text-base font-semibold text-heading">{title}</h2>
+                <p class="mt-2 text-sm leading-6 text-muted">{description}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section tone="soft">
+    <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+      <SectionHeader
+        eyebrow="Operating principles"
+        title="The system should make work easier to trust."
+        subtitle="Premium automation is not a pile of scripts. It is a clear workflow with owners, approval points, audit trails, and practical evidence."
+        class="mb-0"
+      />
+      <div class="rounded-lg border border-gray-200 bg-white p-6 dark:border-white/10 dark:bg-white/[0.035]">
+        <p class="text-lg font-semibold text-heading">A good first solution is narrow, useful, and measurable.</p>
+        <p class="mt-3 text-sm leading-6 text-muted">
+          Start with one workflow that repeats often, involves clear systems, creates visible delays, and has an owner
+          who can review outputs. That gives the first release a concrete job.
+        </p>
+      </div>
+    </div>
+  </Section>
+
+  <FinalCta
+    title="Choose one process and turn it into a system."
+    subtitle="A focused discovery pass can show what to automate, what to connect, and where human review should remain."
+  />
+</Layout>

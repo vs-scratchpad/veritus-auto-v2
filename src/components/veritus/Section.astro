@@ -1,0 +1,35 @@
+---
+import type { HTMLTag } from 'astro/types';
+import { twMerge } from 'tailwind-merge';
+
+export interface Props {
+  id?: string;
+  as?: HTMLTag;
+  tone?: 'white' | 'soft' | 'dark';
+  class?: string;
+  containerClass?: string;
+  narrow?: boolean;
+}
+
+const { id, as = 'section', tone = 'white', class: className = '', containerClass = '', narrow = false } = Astro.props;
+
+const Wrapper = as;
+
+const tones = {
+  white: 'bg-page text-default',
+  soft: 'bg-[#fbfbfc] text-default dark:bg-[#0d1014]',
+  dark: 'bg-gray-950 text-white dark:bg-black',
+};
+---
+
+<Wrapper id={id} class={twMerge('relative scroll-mt-24 not-prose', tones[tone], className)}>
+  <div
+    class={twMerge(
+      'mx-auto px-5 py-14 sm:px-6 md:py-16 lg:px-8 lg:py-20',
+      narrow ? 'max-w-5xl' : 'max-w-7xl',
+      containerClass
+    )}
+  >
+    <slot />
+  </div>
+</Wrapper>

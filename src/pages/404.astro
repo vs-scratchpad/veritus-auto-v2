@@ -1,0 +1,26 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Button from '~/components/veritus/Button.astro';
+import { getHomePermalink } from '~/utils/permalinks';
+
+const title = `Error 404`;
+---
+
+<Layout metadata={{ title }}>
+  <section
+    class="not-prose flex min-h-[70vh] items-center border-b border-gray-200 bg-page px-5 py-20 dark:border-white/10"
+  >
+    <div class="mx-auto max-w-2xl text-center">
+      <p class="vt-eyebrow">404</p>
+      <h1 class="mt-5 text-4xl font-semibold leading-tight text-heading md:text-5xl">
+        This page is not part of the system.
+      </h1>
+      <p class="mt-5 text-lg leading-8 text-muted">
+        The route may have moved, or the page may not exist in the current Veritus site.
+      </p>
+      <div class="mt-8 flex justify-center">
+        <Button href={getHomePermalink()} variant="primary" text="Back to Homepage" />
+      </div>
+    </div>
+  </section>
+</Layout>

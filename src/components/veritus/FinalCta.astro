@@ -1,0 +1,38 @@
+---
+import Section from './Section.astro';
+import Button from './Button.astro';
+import { getPermalink } from '~/utils/permalinks';
+
+export interface Props {
+  title?: string;
+  subtitle?: string;
+}
+
+const {
+  title = 'Start with one workflow worth systemizing.',
+  subtitle = 'Bring Veritus a repeated process, a messy handoff, or an automation idea. The first conversation turns it into a clear system opportunity.',
+} = Astro.props;
+---
+
+<Section tone="dark" containerClass="py-14 md:py-20">
+  <div class="grid gap-8 md:grid-cols-[1.1fr_auto] md:items-center">
+    <div>
+      <h2 class="text-3xl font-semibold leading-tight md:text-4xl">{title}</h2>
+      <p class="mt-4 max-w-2xl text-base leading-7 text-gray-300 md:text-lg">{subtitle}</p>
+    </div>
+    <div class="flex flex-col gap-3 sm:flex-row md:flex-col lg:flex-row">
+      <Button
+        href={getPermalink('/contact')}
+        variant="primary"
+        text="Start a Conversation"
+        class="border-white bg-white text-gray-950 hover:border-gray-200 hover:bg-gray-200"
+      />
+      <Button
+        href={getPermalink('/process')}
+        variant="secondary"
+        text="See the Process"
+        class="border-white/20 bg-transparent text-white hover:border-white/50 dark:border-white/20 dark:bg-transparent dark:text-white"
+      />
+    </div>
+  </div>
+</Section>

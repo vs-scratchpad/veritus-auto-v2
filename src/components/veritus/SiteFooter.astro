@@ -1,0 +1,104 @@
+---
+import { Icon } from 'astro-icon/components';
+import { SITE } from 'astrowind:config';
+import { getHomePermalink } from '~/utils/permalinks';
+
+interface Link {
+  text?: string;
+  href?: string;
+  ariaLabel?: string;
+}
+
+interface LinkGroup {
+  title?: string;
+  links?: Array<Link>;
+}
+
+interface SocialLink extends Link {
+  icon?: string;
+}
+
+export interface Props {
+  links?: Array<LinkGroup>;
+  secondaryLinks?: Array<Link>;
+  socialLinks?: Array<SocialLink>;
+  footNote?: string;
+}
+
+const { links = [], secondaryLinks = [], socialLinks = [], footNote = '' } = Astro.props;
+---
+
+<footer class="not-prose border-t border-gray-200 bg-[#f7f8fa] text-default dark:border-white/10 dark:bg-[#0f1216]">
+  <div class="mx-auto max-w-7xl px-5 py-12 sm:px-6 lg:px-8">
+    <div class="grid gap-10 lg:grid-cols-[1.1fr_1.9fr]">
+      <div>
+        <a
+          class="inline-flex rounded-md text-[1.35rem] font-bold leading-none text-heading focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-950/15 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-white/20 dark:focus-visible:ring-offset-black"
+          href={getHomePermalink()}
+        >
+          {SITE?.name || 'Veritus'}
+        </a>
+        <p class="mt-4 max-w-sm text-sm leading-6 text-muted">
+          AI automation systems, custom software projects, and automated pipeline solutions for operational teams.
+        </p>
+      </div>
+      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        {
+          links.map(({ title, links: groupLinks = [] }) => (
+            <div>
+              <h2 class="text-sm font-semibold text-heading">{title}</h2>
+              <ul class="mt-4 space-y-3 text-sm">
+                {groupLinks.map(({ text, href, ariaLabel }) => (
+                  <li>
+                    <a
+                      class="text-muted transition-colors hover:text-gray-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-950/15 focus-visible:ring-offset-2 focus-visible:ring-offset-[#f7f8fa] dark:hover:text-white dark:focus-visible:ring-white/20 dark:focus-visible:ring-offset-[#0f1216]"
+                      href={href}
+                      aria-label={ariaLabel}
+                    >
+                      {text}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+    <div
+      class="mt-12 flex flex-col gap-4 border-t border-gray-200 pt-6 text-sm text-muted dark:border-white/10 md:flex-row md:items-center md:justify-between"
+    >
+      <div set:html={footNote} />
+      <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
+        <div class="flex items-center gap-2">
+          {
+            socialLinks.map(({ text, href, ariaLabel, icon }) => (
+              <a
+                class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-700 transition duration-200 hover:-translate-y-0.5 hover:border-gray-300 hover:text-gray-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-950/15 focus-visible:ring-offset-2 focus-visible:ring-offset-[#f7f8fa] dark:border-white/10 dark:bg-white/[0.04] dark:text-gray-300 dark:hover:border-white/20 dark:hover:text-white dark:focus-visible:ring-white/20 dark:focus-visible:ring-offset-[#0f1216]"
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={ariaLabel || text}
+                title={text}
+              >
+                {icon && <Icon name={icon} class="h-4 w-4" />}
+              </a>
+            ))
+          }
+        </div>
+        <div class="flex flex-wrap gap-x-5 gap-y-2">
+          {
+            secondaryLinks.map(({ text, href }) => (
+              <a
+                class="transition-colors hover:text-gray-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-950/15 focus-visible:ring-offset-2 focus-visible:ring-offset-[#f7f8fa] dark:hover:text-white dark:focus-visible:ring-white/20 dark:focus-visible:ring-offset-[#0f1216]"
+                href={href}
+              >
+                {text}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,46 @@
+---
+import { twMerge } from 'tailwind-merge';
+import Section from './Section.astro';
+import Button from './Button.astro';
+
+export interface Props {
+  eyebrow?: string;
+  title?: string;
+  subtitle?: string;
+  primaryText?: string;
+  primaryHref?: string;
+  secondaryText?: string;
+  secondaryHref?: string;
+  class?: string;
+}
+
+const {
+  eyebrow,
+  title = await Astro.slots.render('title'),
+  subtitle = await Astro.slots.render('subtitle'),
+  primaryText,
+  primaryHref,
+  secondaryText,
+  secondaryHref,
+  class: className = '',
+} = Astro.props;
+---
+
+<Section
+  class={twMerge('border-b border-gray-200 dark:border-white/10', className)}
+  containerClass="pb-12 pt-14 md:pb-16 md:pt-20"
+>
+  <div class="max-w-4xl">
+    {eyebrow && <p class="vt-eyebrow mb-5">{eyebrow}</p>}
+    {title && <h1 class="text-4xl font-semibold leading-[1.04] text-heading md:text-6xl" set:html={title} />}
+    {subtitle && <p class="mt-6 max-w-3xl text-lg leading-8 text-muted md:text-xl" set:html={subtitle} />}
+    {
+      (primaryText || secondaryText) && (
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          {primaryText && primaryHref && <Button href={primaryHref} variant="primary" text={primaryText} />}
+          {secondaryText && secondaryHref && <Button href={secondaryHref} text={secondaryText} />}
+        </div>
+      )
+    }
+  </div>
+</Section>

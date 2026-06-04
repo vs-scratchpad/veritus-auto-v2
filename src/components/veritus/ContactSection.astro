@@ -1,0 +1,105 @@
+---
+import Section from './Section.astro';
+import SectionHeader from './SectionHeader.astro';
+import Button from './Button.astro';
+
+export interface Props {
+  id?: string;
+  compact?: boolean;
+}
+
+const { id = 'contact', compact = false } = Astro.props;
+---
+
+<Section id={id} tone="white" containerClass={compact ? 'py-12 md:py-16' : ''}>
+  <div class="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+    <div>
+      <SectionHeader
+        eyebrow="Contact"
+        title="Discuss the workflow, system, or pipeline you want to build."
+        subtitle="Share the workflow you want to improve. We’ll review the context and respond with a practical next step."
+        class="mb-0"
+      />
+      <div class="mt-8 rounded-lg border border-gray-200 bg-[#f8f9fa] p-5 dark:border-white/10 dark:bg-white/[0.035]">
+        <p class="text-sm font-semibold text-heading">Useful context to include</p>
+        <ul class="mt-4 space-y-3 text-sm leading-6 text-muted">
+          <li>Current process and where it slows down</li>
+          <li>Tools, data sources, documents, or approvals involved</li>
+          <li>What should be automated, reviewed, or integrated</li>
+        </ul>
+      </div>
+    </div>
+
+    <form class="vt-panel bg-white p-5 dark:bg-[#101318] sm:p-6">
+      <div class="grid gap-5 sm:grid-cols-2">
+        <label class="block text-sm font-medium text-heading">
+          Name
+          <input
+            class="mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-3 text-sm text-gray-950 outline-none transition focus:border-gray-950 focus:ring-2 focus:ring-gray-950/10 dark:border-white/10 dark:bg-black/20 dark:text-white dark:focus:border-white dark:focus:ring-white/10"
+            type="text"
+            name="name"
+            autocomplete="name"
+            placeholder="Your name"
+          />
+        </label>
+        <label class="block text-sm font-medium text-heading">
+          Work email
+          <input
+            class="mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-3 text-sm text-gray-950 outline-none transition focus:border-gray-950 focus:ring-2 focus:ring-gray-950/10 dark:border-white/10 dark:bg-black/20 dark:text-white dark:focus:border-white dark:focus:ring-white/10"
+            type="email"
+            name="email"
+            autocomplete="email"
+            placeholder="you@company.com"
+          />
+        </label>
+        <label class="block text-sm font-medium text-heading">
+          Company
+          <input
+            class="mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-3 text-sm text-gray-950 outline-none transition focus:border-gray-950 focus:ring-2 focus:ring-gray-950/10 dark:border-white/10 dark:bg-black/20 dark:text-white dark:focus:border-white dark:focus:ring-white/10"
+            type="text"
+            name="company"
+            autocomplete="organization"
+            placeholder="Company name"
+          />
+        </label>
+        <label class="block text-sm font-medium text-heading">
+          Project type
+          <select
+            class="mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-3 text-sm text-gray-950 outline-none transition focus:border-gray-950 focus:ring-2 focus:ring-gray-950/10 dark:border-white/10 dark:bg-black/20 dark:text-white dark:focus:border-white dark:focus:ring-white/10"
+            name="project_type"
+          >
+            <option>AI workflow automation</option>
+            <option>Custom software system</option>
+            <option>Pipeline or integration</option>
+            <option>Assessment / discovery</option>
+          </select>
+        </label>
+        <label class="block text-sm font-medium text-heading sm:col-span-2">
+          What do you want to automate?
+          <textarea
+            class="mt-2 block min-h-32 w-full rounded-md border border-gray-200 bg-white px-4 py-3 text-sm text-gray-950 outline-none transition focus:border-gray-950 focus:ring-2 focus:ring-gray-950/10 dark:border-white/10 dark:bg-black/20 dark:text-white dark:focus:border-white dark:focus:ring-white/10"
+            name="message"
+            placeholder="Describe the workflow, systems, handoffs, documents, or decisions involved."></textarea>
+        </label>
+        <label class="block text-sm font-medium text-heading sm:col-span-2">
+          Timeline / urgency
+          <select
+            class="mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-3 text-sm text-gray-950 outline-none transition focus:border-gray-950 focus:ring-2 focus:ring-gray-950/10 dark:border-white/10 dark:bg-black/20 dark:text-white dark:focus:border-white dark:focus:ring-white/10"
+            name="timeline"
+          >
+            <option>Exploring options</option>
+            <option>This month</option>
+            <option>This quarter</option>
+            <option>Urgent operational need</option>
+          </select>
+        </label>
+      </div>
+      <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <p class="text-xs leading-5 text-muted">
+          We use your note to understand the workflow, tools, and review needs.
+        </p>
+        <Button type="submit" variant="primary" text="Start a Conversation" class="sm:min-w-48" />
+      </div>
+    </form>
+  </div>
+</Section>

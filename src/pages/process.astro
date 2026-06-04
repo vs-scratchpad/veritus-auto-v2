@@ -1,0 +1,169 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import PageHero from '~/components/veritus/PageHero.astro';
+import Section from '~/components/veritus/Section.astro';
+import SectionHeader from '~/components/veritus/SectionHeader.astro';
+import FinalCta from '~/components/veritus/FinalCta.astro';
+import ImagePanel from '~/components/veritus/ImagePanel.astro';
+import { getPermalink } from '~/utils/permalinks';
+
+const metadata = {
+  title: 'Process',
+  description:
+    'How Veritus turns business workflows into AI automation systems, custom software, integrations, and automated pipelines.',
+};
+
+const phases = [
+  [
+    '01',
+    'Discover',
+    'Map the workflow, inputs, owners, tools, documents, exceptions, approvals, and desired business outcome.',
+    'Client provides process context, current tools, example requests, and owner interviews.',
+    'Veritus produces a workflow map, automation candidates, and first-release recommendation.',
+  ],
+  [
+    '02',
+    'Model',
+    'Define workflow states, data movement, decision points, review gates, and the AI or software role.',
+    'Client confirms business rules, approval needs, and risk boundaries.',
+    'Veritus produces the control model, data map, and system surface direction.',
+  ],
+  [
+    '03',
+    'Build',
+    'Create the workflow surface, integrations, automation logic, and operational controls.',
+    'Client gives access to approved tools, sample data, and review feedback.',
+    'Veritus produces the first working system, connected pipeline, or internal tool.',
+  ],
+  [
+    '04',
+    'Validate',
+    'Test with realistic cases, inspect outputs, handle exceptions, and prepare launch criteria.',
+    'Client reviews drafts, edge cases, and expected system behavior.',
+    'Veritus produces launch checks, correction patterns, and a controlled release plan.',
+  ],
+  [
+    '05',
+    'Improve',
+    'Use corrections, audit trails, feedback, and usage patterns to refine or expand the system.',
+    'Client shares usage feedback, review outcomes, and new workflow priorities.',
+    'Veritus produces improvement backlog, evidence summary, and expansion path.',
+  ],
+];
+
+const goodProject = [
+  ['Repeated', 'The workflow happens often enough that removing manual steps matters.'],
+  ['Owned', 'A clear business owner can approve rules, outputs, and exceptions.'],
+  ['Connected', 'The work touches identifiable tools, documents, data, or records.'],
+  ['Reviewable', 'Important actions can be approved before customer or system impact.'],
+  ['Measurable', 'Cycle time, corrections, exceptions, or throughput can be tracked.'],
+];
+
+const checkpoints = [
+  ['Output quality', 'Do drafts, summaries, and extracted fields match business expectations?'],
+  ['Approval clarity', 'Does every sensitive action have a named reviewer and route?'],
+  ['Exception handling', 'Do ambiguous cases stop cleanly instead of guessing?'],
+  ['System update safety', 'Are downstream updates limited to approved changes?'],
+];
+---
+
+<Layout metadata={metadata}>
+  <PageHero
+    eyebrow="Process"
+    title="A disciplined path from messy workflow to launchable system."
+    subtitle="Veritus treats automation as a systems problem: understand the work, design the control model, build the integration layer, and improve from evidence."
+    primaryText="Start a Conversation"
+    primaryHref={getPermalink('/contact')}
+    secondaryText="View Solutions"
+    secondaryHref={getPermalink('/capabilities')}
+  />
+
+  <Section>
+    <div class="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+      <SectionHeader
+        eyebrow="Delivery model"
+        title="Every phase keeps business control visible."
+        subtitle="The process is built for AI automation, custom software, and pipelines where approvals, exceptions, and downstream records matter."
+        class="mb-0"
+      />
+      <ImagePanel
+        variant="productionPipeline"
+        shape="panorama"
+        alt="High-resolution abstract automation pipeline moving data through software layers"
+      />
+    </div>
+  </Section>
+
+  <Section tone="soft">
+    <SectionHeader
+      eyebrow="How the work moves forward"
+      title="What happens in each phase."
+      subtitle="The work moves from process clarity to system design, implementation, validation, and measured improvement."
+    />
+    <div class="grid gap-4">
+      {
+        phases.map(([number, title, description, clientInput, veritusOutput]) => (
+          <article class="vt-card grid gap-5 p-5 md:grid-cols-[80px_0.42fr_1fr_1fr] md:items-start">
+            <p class="text-sm font-semibold text-secondary">{number}</p>
+            <div>
+              <h2 class="text-lg font-semibold text-heading">{title}</h2>
+              <p class="mt-2 text-sm leading-6 text-muted">{description}</p>
+            </div>
+            <div class="border-t border-gray-200 pt-4 dark:border-white/10">
+              <p class="text-sm font-semibold text-heading">Client provides</p>
+              <p class="mt-2 text-sm leading-6 text-muted">{clientInput}</p>
+            </div>
+            <div class="border-t border-gray-200 pt-4 dark:border-white/10">
+              <p class="text-sm font-semibold text-heading">Veritus produces</p>
+              <p class="mt-2 text-sm leading-6 text-muted">{veritusOutput}</p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section>
+    <SectionHeader
+      eyebrow="Quality checkpoints"
+      title="Review is part of the system, not an afterthought."
+      subtitle="A launchable automation system should make outputs, approvals, exceptions, and updates easy to inspect."
+    />
+    <div class="grid gap-4 md:grid-cols-4">
+      {
+        checkpoints.map(([title, description]) => (
+          <div class="vt-card p-5">
+            <h2 class="text-base font-semibold text-heading">{title}</h2>
+            <p class="mt-3 text-sm leading-6 text-muted">{description}</p>
+          </div>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section tone="soft">
+    <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+      <SectionHeader
+        eyebrow="Good first project"
+        title="A good first project is concrete, repeated, and measurable."
+        subtitle="The best starting point is narrow enough to ship but important enough that the operational improvement is visible."
+        class="mb-0"
+      />
+      <div class="grid gap-4 sm:grid-cols-2">
+        {
+          goodProject.map(([title, description]) => (
+            <div class="vt-card p-5">
+              <h2 class="text-base font-semibold text-heading">{title}</h2>
+              <p class="mt-3 text-sm leading-6 text-muted">{description}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </Section>
+
+  <FinalCta
+    title="Bring the workflow. Veritus will help shape the system."
+    subtitle="The first step is clarity: what happens today, what should change, and what a controlled first version should prove."
+  />
+</Layout>

@@ -1,0 +1,83 @@
+---
+import Section from './Section.astro';
+import SectionHeader from './SectionHeader.astro';
+import { getAsset, getPermalink } from '~/utils/permalinks';
+
+const images = {
+  workflow: '/assets/images/workflow-blueprint-system.webp',
+  software: '/assets/images/custom-software-surface.webp',
+  pipeline: '/assets/images/production-automation-pipeline-hd.webp',
+  agent: '/assets/images/governed-agent-control.webp',
+  integration: '/assets/images/integration-control-surface.webp',
+  document: '/assets/images/document-processing-system.webp',
+};
+
+const capabilities = [
+  [
+    'AI workflow design',
+    'Map the repeated work, decisions, approvals, and data movement before automation is introduced.',
+    '/capabilities#ai-workflow-design',
+    images.workflow,
+  ],
+  [
+    'Custom software systems',
+    'Build focused internal tools, dashboards, and workflow applications around how teams actually operate.',
+    '/capabilities#custom-software',
+    images.software,
+  ],
+  [
+    'Automated pipelines',
+    'Move work from intake to classification, document handling, approval, and downstream system updates.',
+    '/capabilities#automated-pipelines',
+    images.pipeline,
+  ],
+  [
+    'Governed AI agents',
+    'Use AI to summarize, extract, draft, and route work while people approve important actions.',
+    '/capabilities#governed-ai-agents',
+    images.agent,
+  ],
+  [
+    'Tool integrations',
+    'Connect CRMs, support queues, databases, documents, messaging tools, APIs, and knowledge sources.',
+    '/capabilities#integration-systems',
+    images.integration,
+  ],
+  [
+    'Document automation',
+    'Extract fields, validate exceptions, route approvals, and prepare clean records for business systems.',
+    '/capabilities#document-automation',
+    images.document,
+  ],
+] as const;
+---
+
+<Section id="capabilities" tone="white">
+  <SectionHeader
+    eyebrow="Capabilities"
+    title="Systems for business work that keeps crossing tools."
+    subtitle="Veritus combines workflow design, software engineering, AI assistance, integrations, and review controls for repeated operational work."
+  />
+  <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+    {
+      capabilities.map(([title, description, href, image], index) => (
+        <article class="vt-card vt-card-link flex min-h-[330px] flex-col p-5">
+          <div class="vt-card-media">
+            <img src={getAsset(image)} alt="" loading="lazy" decoding="async" />
+          </div>
+          <div class="mb-6 flex items-center justify-between">
+            <div class="flex h-10 w-10 items-center justify-center rounded-full border border-secondary/20 bg-secondary/5 text-sm font-semibold text-secondary dark:border-secondary/25 dark:bg-secondary/10">
+              {String(index + 1).padStart(2, '0')}
+            </div>
+            <span class="h-2.5 w-2.5 rounded-full bg-secondary" aria-hidden="true" />
+          </div>
+          <h3 class="text-lg font-semibold text-heading">{title}</h3>
+          <p class="mt-3 text-sm leading-6 text-muted">{description}</p>
+          <a href={getPermalink(href)} class="vt-arrow mt-auto pt-6">
+            View solution
+          </a>
+        </article>
+      ))
+    }
+  </div>
+</Section>

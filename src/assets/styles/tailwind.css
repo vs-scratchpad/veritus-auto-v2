@@ -1,0 +1,288 @@
+@import 'tailwindcss';
+
+@plugin "@tailwindcss/typography";
+
+@variant dark (&:where(.dark, .dark *));
+
+@custom-variant intersect (&:not([no-intersect]));
+
+@theme {
+  --color-primary: var(--aw-color-primary);
+  --color-secondary: var(--aw-color-secondary);
+  --color-accent: var(--aw-color-accent);
+  --color-heading: var(--aw-color-text-heading);
+  --color-default: var(--aw-color-text-default);
+  --color-muted: var(--aw-color-text-muted);
+
+  --font-sans:
+    'var(--aw-font-sans, ui-sans-serif)', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-serif: 'var(--aw-font-serif, ui-serif)', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+  --font-heading: 'var(--aw-font-heading, ui-sans-serif)', ui-sans-serif, system-ui, sans-serif;
+
+  --animate-fade: fadeInUp 1s both;
+
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(2rem);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-feature-settings:
+    'kern' 1,
+    'liga' 1,
+    'calt' 1;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+@utility bg-page {
+  background-color: var(--aw-color-bg-page);
+}
+
+@utility bg-dark {
+  background-color: var(--aw-color-bg-page-dark);
+}
+
+@utility bg-light {
+  background-color: var(--aw-color-bg-page);
+}
+
+@utility text-page {
+  color: var(--aw-color-text-page);
+}
+
+@utility text-heading {
+  color: var(--aw-color-text-heading);
+}
+
+@utility text-muted {
+  color: var(--aw-color-text-muted);
+}
+
+@utility btn {
+  @apply inline-flex min-h-11 items-center justify-center rounded-full border border-gray-300 bg-white px-5 py-2.5 text-center text-sm font-semibold leading-none text-gray-950 transition duration-200 hover:-translate-y-0.5 hover:border-gray-950 hover:shadow-[0_14px_34px_rgba(15,23,42,0.10)] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-950/15 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:border-white/35 dark:hover:shadow-none dark:focus-visible:ring-white/20 dark:focus-visible:ring-offset-black cursor-pointer;
+}
+
+@utility btn-primary {
+  @apply btn border-gray-950 bg-gray-950 text-white hover:border-gray-800 hover:bg-gray-800 dark:border-white dark:bg-white dark:text-gray-950 dark:hover:border-gray-200 dark:hover:bg-gray-200;
+}
+
+@utility btn-secondary {
+  @apply btn;
+}
+
+@utility btn-tertiary {
+  @apply btn border-transparent bg-transparent shadow-none text-muted hover:bg-gray-100 hover:text-gray-950 dark:text-gray-400 dark:hover:bg-white/10 dark:hover:text-white;
+}
+
+.vt-eyebrow {
+  @apply text-sm font-semibold text-secondary;
+}
+
+.vt-card {
+  @apply relative overflow-hidden rounded-lg border border-gray-200 bg-white shadow-[0_10px_34px_rgba(15,23,42,0.025)] transition duration-300 before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-secondary/35 before:opacity-0 before:transition hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-[0_18px_52px_rgba(15,23,42,0.06)] hover:before:opacity-100 dark:border-white/10 dark:bg-white/[0.035] dark:shadow-none dark:before:bg-secondary/60 dark:hover:border-white/20;
+}
+
+.vt-card-link {
+  @apply after:absolute after:inset-0 after:rounded-lg focus-within:ring-2 focus-within:ring-gray-950/15 focus-within:ring-offset-2 focus-within:ring-offset-white dark:focus-within:ring-white/20 dark:focus-within:ring-offset-black;
+}
+
+.vt-card-link a {
+  @apply relative z-10;
+}
+
+.vt-arrow {
+  @apply inline-flex items-center gap-2 text-sm font-semibold text-heading transition;
+}
+
+.vt-arrow::after {
+  content: '→';
+  @apply translate-x-0 text-muted transition duration-200;
+}
+
+.vt-card:hover .vt-arrow::after,
+.vt-arrow:hover::after {
+  @apply translate-x-1 text-heading;
+}
+
+.vt-chip {
+  @apply inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white px-3.5 py-2 text-sm font-medium text-gray-700 shadow-[0_8px_24px_rgba(15,23,42,0.04)] transition duration-200 hover:-translate-y-0.5 hover:border-gray-300 dark:border-white/10 dark:bg-white/[0.045] dark:text-gray-300 dark:shadow-none dark:hover:border-white/20;
+}
+
+.vt-logo-strip {
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+}
+
+.vt-logo-item {
+  @apply inline-flex h-12 min-w-[154px] items-center justify-center gap-2.5 rounded-md border border-gray-200 bg-white/85 px-5 text-sm font-semibold text-gray-700 shadow-[0_10px_30px_rgba(15,23,42,0.045)] transition duration-200 hover:-translate-y-0.5 hover:border-gray-300 hover:bg-white dark:border-white/10 dark:bg-white/[0.045] dark:text-gray-300 dark:shadow-none dark:hover:border-white/20 dark:hover:bg-white/[0.07];
+}
+
+.vt-panel {
+  @apply rounded-lg border border-gray-200 bg-white shadow-[0_22px_70px_rgba(15,23,42,0.07)] dark:border-white/10 dark:bg-[#10141a] dark:shadow-none;
+}
+
+.vt-image-panel {
+  @apply w-full min-w-0 overflow-hidden rounded-lg border border-gray-200 bg-white shadow-[0_24px_80px_rgba(15,23,42,0.07)] dark:border-white/10 dark:bg-white/[0.035] dark:shadow-none;
+}
+
+.vt-image-panel img {
+  @apply block h-full w-full object-cover;
+}
+
+.vt-image-panel--landscape {
+  aspect-ratio: 16 / 9;
+}
+
+.vt-image-panel--panorama {
+  aspect-ratio: 16 / 7;
+}
+
+.vt-image-panel--portrait {
+  position: relative;
+  align-self: stretch;
+  min-height: 0;
+}
+
+.vt-image-panel--portrait img {
+  @apply absolute inset-0 object-cover;
+}
+
+.vt-card-media {
+  @apply mb-5 overflow-hidden rounded-md border border-gray-200 bg-[#fbfbfc] dark:border-white/10 dark:bg-white/[0.035];
+  aspect-ratio: 16 / 9;
+}
+
+.vt-card-media img {
+  @apply h-full w-full object-cover transition duration-500;
+}
+
+.vt-card:hover .vt-card-media img {
+  @apply scale-[1.025];
+}
+
+.vt-logo-track {
+  animation: vtLogoTrack 36s linear infinite;
+}
+
+.vt-logo-strip:hover .vt-logo-track {
+  animation-play-state: paused;
+}
+
+.vt-logo-strip:focus-within .vt-logo-track {
+  animation-play-state: paused;
+}
+
+@keyframes vtLogoTrack {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+#header.scroll .vt-header-surface {
+  @apply border-gray-200 bg-white/[0.92] backdrop-blur-md dark:border-white/10 dark:bg-[#080a0d]/90;
+  box-shadow: 0 1rem 3rem rgb(15 23 42 / 8%);
+}
+.dark #header.scroll .vt-header-surface {
+  box-shadow: none;
+}
+
+#header.expanded nav {
+  position: fixed;
+  top: 64px;
+  left: 0;
+  right: 0;
+  bottom: 76px !important;
+  background: var(--aw-color-bg-page);
+  border-top: 1px solid var(--vt-color-border);
+  border-bottom: 1px solid var(--vt-color-border);
+}
+
+.dropdown:focus .dropdown-menu,
+.dropdown:focus-within .dropdown-menu,
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+[astro-icon].icon-light > * {
+  stroke-width: 1.2;
+}
+
+[astro-icon].icon-bold > * {
+  stroke-width: 2.4;
+}
+
+[data-aw-toggle-menu] path {
+  @apply transition;
+}
+[data-aw-toggle-menu].expanded g > path:first-child {
+  @apply -rotate-45 translate-y-[15px] translate-x-[-3px];
+}
+[data-aw-toggle-menu].expanded g > path:last-child {
+  @apply rotate-45 translate-y-[-8px] translate-x-[14px];
+}
+
+.dd *:first-child {
+  margin-top: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .vt-logo-track {
+    transform: none !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .vt-logo-strip {
+    -webkit-mask-image: none;
+    mask-image: none;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .vt-logo-strip::-webkit-scrollbar {
+    display: none;
+  }
+
+  .vt-logo-track {
+    animation: none;
+  }
+}
+
+@media (max-width: 1023px) {
+  .vt-image-panel--panorama,
+  .vt-image-panel--portrait {
+    aspect-ratio: 16 / 10;
+    height: auto;
+    min-height: 0;
+  }
+}

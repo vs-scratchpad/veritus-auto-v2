@@ -1,0 +1,25 @@
+---
+import PageLayout from '~/layouts/PageLayout.astro';
+import SiteHeader from '~/components/veritus/SiteHeader.astro';
+
+import { headerData } from '~/navigation';
+import type { MetaData } from '~/types';
+
+export interface Props {
+  metadata?: MetaData;
+}
+
+const { metadata } = Astro.props;
+---
+
+<PageLayout metadata={metadata}>
+  <Fragment slot="announcement">
+    <slot name="announcement" />
+  </Fragment>
+  <Fragment slot="header">
+    <slot name="header">
+      <SiteHeader links={headerData.links} actions={headerData.actions} showToggleTheme />
+    </slot>
+  </Fragment>
+  <slot />
+</PageLayout>

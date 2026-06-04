@@ -1,0 +1,54 @@
+---
+import type { InferGetStaticPropsType, GetStaticPaths } from 'astro';
+import { blogCategoryRobots, getStaticPathsBlogCategory } from '~/utils/blog';
+
+import Layout from '~/layouts/PageLayout.astro';
+import PageHero from '~/components/veritus/PageHero.astro';
+import Section from '~/components/veritus/Section.astro';
+import Button from '~/components/veritus/Button.astro';
+import { getPermalink } from '~/utils/permalinks';
+
+export const prerender = true;
+
+export const getStaticPaths = (async ({ paginate }) => {
+  return await getStaticPathsBlogCategory({ paginate });
+}) satisfies GetStaticPaths;
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths> & { category: Record<string, string> };
+
+const { page, category } = Astro.props as Props;
+
+const currentPage = page.currentPage ?? 1;
+
+const metadata = {
+  title: `Category '${category.title}' ${currentPage > 1 ? ` - Page ${currentPage}` : ''}`,
+  robots: {
+    index: blogCategoryRobots?.index,
+    follow: blogCategoryRobots?.follow,
+  },
+};
+---
+
+<Layout metadata={metadata}>
+  <PageHero eyebrow="Resource category" title={category.title} subtitle="Veritus resource notes grouped by category." />
+
+  <Section>
+    <div class="grid gap-4">
+      {
+        page.data.map((post) => (
+          <article class="rounded-lg border border-gray-200 bg-white p-6 dark:border-white/10 dark:bg-white/[0.03]">
+            <h2 class="text-2xl font-semibold leading-tight text-heading">{post.title}</h2>
+            {post.excerpt && <p class="mt-3 max-w-3xl text-sm leading-6 text-muted">{post.excerpt}</p>}
+            <div class="mt-6">
+              <Button href={getPermalink(post.permalink, 'post')} variant="link" text="Read resource" />
+            </div>
+          </article>
+        ))
+      }
+    </div>
+    <div class="mt-8 flex flex-wrap gap-3">
+      {page.url.prev && <Button href={page.url.prev} text="Previous" />}
+      {page.url.next && <Button href={page.url.next} text="Next" />}
+    </div>
+  </Section>
+</Layout>

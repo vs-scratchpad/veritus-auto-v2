@@ -1,0 +1,32 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import CampaignPage from '~/components/veritus/CampaignPage.astro';
+
+const metadata = {
+  title: 'Sales Automation',
+  description:
+    'Veritus sales automation systems for lead qualification, account context, follow-up preparation, CRM updates, and human-reviewed outreach.',
+};
+---
+
+<Layout metadata={metadata}>
+  <CampaignPage
+    eyebrow="Sales automation"
+    title="Turn inbound sales activity into a cleaner operating pipeline."
+    subtitle="Veritus can design a sales operations system that qualifies requests, prepares follow-up, updates CRM context, and keeps outreach reviewable."
+    imageVariant="salesOperations"
+    imageAlt="Abstract sales operations automation surface with lead context, CRM updates, and review checkpoints"
+    outcomes={[
+      ['Lead context', 'Summaries of inbound interest, fit signals, company details, and relevant history.'],
+      ['Prepared follow-up', 'Drafted next steps and messages that a sales owner can review before sending.'],
+      ['Cleaner CRM updates', 'Structured activity, owner notes, and status changes prepared from the workflow.'],
+    ]}
+    workflow={[
+      ['Capture inbound request', 'Collect the source, message, account details, and any existing CRM context.'],
+      ['Prepare qualification', 'Classify fit, urgency, missing details, and recommended next action.'],
+      ['Review and update', 'Let the owner approve follow-up and update CRM records with an audit trail.'],
+    ]}
+    ctaTitle="Make sales operations easier to inspect."
+    ctaSubtitle="Start with one inbound path and define how qualification, follow-up, and CRM hygiene should work."
+  />
+</Layout>

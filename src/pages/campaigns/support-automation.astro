@@ -1,0 +1,32 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import CampaignPage from '~/components/veritus/CampaignPage.astro';
+
+const metadata = {
+  title: 'Support Automation',
+  description:
+    'Veritus support automation systems for ticket triage, suggested replies, routing, escalation, knowledge context, and human review.',
+};
+---
+
+<Layout metadata={metadata}>
+  <CampaignPage
+    eyebrow="Support automation"
+    title="Help support teams triage, route, and respond with better context."
+    subtitle="Veritus can design support workflows that classify tickets, detect urgency, prepare response drafts, and keep final customer communication under team control."
+    imageVariant="supportAutomation"
+    imageAlt="Abstract support automation queue with triage, response draft, knowledge context, and review surfaces"
+    outcomes={[
+      ['Faster triage', 'Requests categorized by issue type, urgency, account context, and likely owner.'],
+      ['Better context', 'Approved knowledge, policy, and previous interaction details surfaced in one workflow.'],
+      ['Reviewable replies', 'Draft responses and escalations prepared for human approval before sending.'],
+    ]}
+    workflow={[
+      ['Classify the ticket', 'Identify issue type, urgency, missing fields, and required policy context.'],
+      ['Prepare the response', 'Draft a reply, route recommendation, or escalation note from approved information.'],
+      ['Approve the action', 'Let a support owner edit, approve, or reroute before customer-facing output moves.'],
+    ]}
+    ctaTitle="Design support automation that stays accountable."
+    ctaSubtitle="Start with one support queue and define where AI should assist, escalate, or wait for review."
+  />
+</Layout>

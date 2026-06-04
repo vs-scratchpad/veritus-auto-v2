@@ -1,0 +1,47 @@
+---
+import { getAsset } from '~/utils/permalinks';
+
+const images = {
+  architecture: '/assets/images/ai-architecture-layer.webp',
+  pipeline: '/assets/images/automation-pipeline.webp',
+  review: '/assets/images/review-control-layer.webp',
+  operatingSurface: '/assets/images/automation-operating-surface-portrait.webp',
+  focusAreas: '/assets/images/veritus-focus-areas-portrait.webp',
+  productionPipeline: '/assets/images/production-automation-pipeline-hd.webp',
+  workflowBlueprint: '/assets/images/workflow-blueprint-system.webp',
+  customSoftware: '/assets/images/custom-software-surface.webp',
+  integrationSurface: '/assets/images/integration-control-surface.webp',
+  documentProcessing: '/assets/images/document-processing-system.webp',
+  governedAgent: '/assets/images/governed-agent-control.webp',
+  operationsIntake: '/assets/images/operations-intake-routing.webp',
+  supportAutomation: '/assets/images/support-automation-queue.webp',
+  salesOperations: '/assets/images/sales-operations-crm.webp',
+  knowledgeSystem: '/assets/images/knowledge-system-retrieval.webp',
+  auditMeasurement: '/assets/images/audit-measurement-layer.webp',
+};
+
+type ImageVariant = keyof typeof images;
+type ImageShape = 'landscape' | 'panorama' | 'portrait';
+
+export interface Props {
+  variant?: ImageVariant;
+  shape?: ImageShape;
+  alt?: string;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+}
+
+const portraitVariants = new Set<ImageVariant>(['operatingSurface', 'focusAreas']);
+
+const {
+  variant = 'architecture',
+  shape = portraitVariants.has(variant) ? 'portrait' : 'landscape',
+  alt = '',
+  class: className = '',
+  loading = 'lazy',
+} = Astro.props;
+---
+
+<figure class:list={['vt-image-panel', `vt-image-panel--${shape}`, className]}>
+  <img src={getAsset(images[variant])} alt={alt} loading={loading} decoding="async" />
+</figure>

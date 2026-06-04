@@ -1,0 +1,79 @@
+---
+import Section from './Section.astro';
+import SectionHeader from './SectionHeader.astro';
+import { getAsset, getPermalink } from '~/utils/permalinks';
+
+const logoItems = [
+  ['GitHub', 'github.svg', 'https://github.com/'],
+  ['Notion', 'notion.svg', 'https://www.notion.com/'],
+  ['Airtable', 'airtable.svg', 'https://www.airtable.com/'],
+  ['HubSpot', 'hubspot.svg', 'https://www.hubspot.com/'],
+  ['PostgreSQL', 'postgresql.svg', 'https://www.postgresql.org/'],
+  ['Vercel', 'vercel.svg', 'https://vercel.com/'],
+  ['Docker', 'docker.svg', 'https://www.docker.com/'],
+  ['Linear', 'linear.svg', 'https://linear.app/'],
+  ['Google Workspace', 'google.svg', 'https://workspace.google.com/'],
+];
+
+const textItems: Array<[string, string, boolean?]> = [
+  ['OpenAI', 'https://openai.com/'],
+  ['Slack', 'https://slack.com/'],
+  ['Codex', 'https://openai.com/codex/'],
+  ['APIs', getPermalink('/capabilities#integration-systems'), false],
+  ['Browser automation', getPermalink('/capabilities#automated-pipelines'), false],
+];
+
+const allItems: Array<{ name: string; href: string; src?: string; external?: boolean }> = [
+  ...logoItems.map(([name, file, href]) => ({
+    name,
+    href,
+    src: getAsset(`/assets/logos/${file}`),
+    external: true,
+  })),
+  ...textItems.map(([name, href, external = true]) => ({ name, href, external: Boolean(external) })),
+];
+const track = [
+  ...allItems.map((item) => ({ ...item, duplicate: false })),
+  ...allItems.map((item) => ({ ...item, duplicate: true })),
+];
+---
+
+<Section id="integrations" tone="white" containerClass="py-10 md:py-12">
+  <SectionHeader
+    eyebrow="Operating stack"
+    title="Designed around the tools modern teams already use."
+    subtitle="Veritus systems can connect AI models, workflow tools, internal software, data sources, and business platforms into flows with clear approval points."
+    align="center"
+    class="mb-8"
+  />
+
+  <div
+    class="vt-logo-strip overflow-hidden rounded-lg border border-gray-200 bg-[#f8f9fb] py-3 dark:border-white/10 dark:bg-white/[0.025]"
+  >
+    <div class="vt-logo-track flex w-max gap-3 px-3">
+      {
+        track.map(({ name, href, src, external, duplicate }) => (
+          <a
+            class:list={[
+              'vt-logo-item focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-950/15 focus-visible:ring-offset-2 focus-visible:ring-offset-[#f8f9fb] dark:focus-visible:ring-white/20 dark:focus-visible:ring-offset-black',
+              { 'hidden sm:inline-flex': duplicate },
+            ]}
+            href={href}
+            aria-label={`${name}${external ? ' website' : ''}`}
+            {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+          >
+            {src && (
+              <img
+                src={src}
+                alt=""
+                loading="eager"
+                class="h-4 w-4 shrink-0 object-contain opacity-70 grayscale dark:invert"
+              />
+            )}
+            <span>{name}</span>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</Section>

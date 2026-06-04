@@ -1,0 +1,71 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import PageHero from '~/components/veritus/PageHero.astro';
+import Section from '~/components/veritus/Section.astro';
+import SectionHeader from '~/components/veritus/SectionHeader.astro';
+import FinalCta from '~/components/veritus/FinalCta.astro';
+import { getPermalink } from '~/utils/permalinks';
+
+const metadata = {
+  title: 'Collateral',
+  description:
+    'Veritus Automation planning resources for AI workflow readiness, automation assessment, governance, and software system design.',
+};
+
+const resources = [
+  ['Company brief', 'A concise overview of Veritus positioning, capabilities, and operating approach.'],
+  [
+    'Workflow readiness checklist',
+    'A planning worksheet for process clarity, ownership, data access, and approval needs.',
+  ],
+  ['AI agents for operations', 'A practical one-pager on agent-assisted intake, routing, drafting, and review.'],
+  [
+    'Automation use case guide',
+    'A framework for comparing workflows by value, frequency, risk, and integration readiness.',
+  ],
+  [
+    'Governance overview',
+    'A plain-language guide to approvals, audit trails, access boundaries, and reviewable outputs.',
+  ],
+  [
+    'Assessment worksheet',
+    'A discovery template for workflow steps, systems, exceptions, and desired operating outcomes.',
+  ],
+];
+---
+
+<Layout metadata={metadata}>
+  <PageHero
+    eyebrow="Collateral"
+    title="Planning materials for automation decisions."
+    subtitle="Resources for teams evaluating AI workflow readiness, system design, governance, and first-use-case selection."
+    primaryText="Discuss a Project"
+    primaryHref={getPermalink('/contact')}
+    secondaryText="View Use Cases"
+    secondaryHref={getPermalink('/examples')}
+  />
+
+  <Section>
+    <SectionHeader
+      eyebrow="Resource library"
+      title="Original Veritus materials can live here once approved."
+      subtitle="Use these resource categories to frame automation readiness, governance, and first-project planning."
+    />
+    <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      {
+        resources.map(([title, description]) => (
+          <article class="vt-card p-6">
+            <p class="vt-eyebrow text-xs">Planning asset</p>
+            <h2 class="mt-5 text-lg font-semibold text-heading">{title}</h2>
+            <p class="mt-3 text-sm leading-6 text-muted">{description}</p>
+          </article>
+        ))
+      }
+    </div>
+  </Section>
+
+  <FinalCta
+    title="Turn planning into a focused automation assessment."
+    subtitle="Use one workflow to define the system, review model, data boundaries, and first delivery path."
+  />
+</Layout>

@@ -1,0 +1,21 @@
+---
+import Section from './Section.astro';
+import SectionHeader from './SectionHeader.astro';
+import ImagePanel from './ImagePanel.astro';
+---
+
+<Section id="system-shift" tone="soft">
+  <div class="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
+    <SectionHeader
+      eyebrow="From manual process to system"
+      title="The goal is not more AI. The goal is cleaner business execution."
+      subtitle="Veritus starts with the real process, then designs the software and automation layer that makes repeated work visible, approved, and easier to run."
+      class="mb-0"
+    />
+
+    <ImagePanel
+      variant="workflowBlueprint"
+      alt="Abstract workflow blueprint transforming messy business inputs into a controlled automation surface"
+    />
+  </div>
+</Section>

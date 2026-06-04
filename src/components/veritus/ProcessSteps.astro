@@ -1,0 +1,30 @@
+---
+import Section from './Section.astro';
+import SectionHeader from './SectionHeader.astro';
+
+const steps = [
+  ['Discover', 'Understand the workflow, systems, exceptions, owners, and business outcome.'],
+  ['Design', 'Define the agent role, software surface, review gates, and integration path.'],
+  ['Build', 'Connect tools, create the workflow, and prepare a focused first release.'],
+  ['Improve', 'Use corrections, audit trails, and exception patterns to refine the system.'],
+];
+---
+
+<Section id="process" tone="white">
+  <SectionHeader
+    eyebrow="How Veritus works"
+    title="A practical path from workflow discovery to production automation."
+    subtitle="The process is intentionally disciplined: understand the work first, then build the system around reliable actions, clear approvals, and useful records."
+  />
+  <div class="grid gap-4 md:grid-cols-4">
+    {
+      steps.map(([title, description], index) => (
+        <article class="vt-card p-5">
+          <p class="text-sm font-semibold text-secondary">{String(index + 1).padStart(2, '0')}</p>
+          <h3 class="mt-8 text-lg font-semibold text-heading">{title}</h3>
+          <p class="mt-3 text-sm leading-6 text-muted">{description}</p>
+        </article>
+      ))
+    }
+  </div>
+</Section>

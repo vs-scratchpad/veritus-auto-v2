@@ -1,0 +1,32 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import CampaignPage from '~/components/veritus/CampaignPage.astro';
+
+const metadata = {
+  title: 'Document Processing',
+  description:
+    'Veritus document processing automation for extraction, validation, exception handling, approval workflows, and business system updates.',
+};
+---
+
+<Layout metadata={metadata}>
+  <CampaignPage
+    eyebrow="Document processing"
+    title="Move document-heavy work from manual review to controlled workflow."
+    subtitle="Veritus can design systems that extract fields, validate documents, route exceptions, capture approvals, and prepare updates for downstream systems."
+    imageVariant="documentProcessing"
+    imageAlt="Abstract document automation system with extraction, validation, review, and record-update layers"
+    outcomes={[
+      ['Structured extraction', 'Key fields prepared from invoices, forms, contracts, or operating documents.'],
+      ['Exception handling', 'Missing, inconsistent, or high-risk details routed to the right owner for review.'],
+      ['Approved updates', 'Validated records prepared for export with review state and audit context.'],
+    ]}
+    workflow={[
+      ['Receive and classify', 'Identify document type, source, required fields, and relevant business record.'],
+      ['Extract and validate', 'Prepare structured fields and flag missing or inconsistent details.'],
+      ['Review and export', 'Capture approval before updating systems or handing the record to the next workflow.'],
+    ]}
+    ctaTitle="Turn document intake into a governed pipeline."
+    ctaSubtitle="Start with one document type and define extraction, validation, exception, and approval paths."
+  />
+</Layout>
