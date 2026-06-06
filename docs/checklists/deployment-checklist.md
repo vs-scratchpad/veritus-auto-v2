@@ -4,6 +4,7 @@ Use this after visual approval and before pushing to the deployment repository.
 
 ## Before Push
 
+- Change into the app directory: `cd veritus-auto`.
 - Run `npm run check`.
 - Run `npm run build`.
 - Confirm the project has the correct `site` value.

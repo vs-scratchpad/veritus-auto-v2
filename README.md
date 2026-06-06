@@ -1,302 +1,294 @@
-# 🚀 AstroWind
+# Veritus Automation Website
 
-<img src="https://raw.githubusercontent.com/arthelokyo/.github/main/resources/astrowind/lighthouse-score.png" align="right"
-     alt="AstroWind Lighthouse Score" width="100" height="358">
+This repository contains the static marketing website for **Veritus Automation**, a technology company focused on AI automation systems, custom software projects, and automated pipeline solutions for business teams.
 
-🌟 _Most *starred* & *forked* Astro theme in 2022, 2023, 2024 & 2025_. 🌟
+The website source lives inside:
 
-**AstroWind** is a free and open-source template to make your website using **[Astro v6](https://astro.build/) + [Tailwind CSS v4](https://tailwindcss.com/)**. Ready to start a new project and designed taking into account web best practices.
-
-- ✅ **Production-ready** scores in **PageSpeed Insights** reports.
-- ✅ Integration with **Tailwind CSS v4** supporting **Dark mode** and **_RTL_**.
-- ✅ **Fast and SEO friendly blog** with automatic **RSS feed**, **MDX** support, **Categories & Tags**, **Social Share**, ...
-- ✅ **Image Optimization** (using new **Astro Assets** and **Unpic** for Universal image CDN).
-- ✅ Generation of **project sitemap** based on your routes.
-- ✅ **Open Graph tags** for social media sharing.
-- ✅ **Analytics** built-in Google Analytics, and Splitbee integration.
-
-<br>
-
-![AstroWind Theme Screenshot](https://raw.githubusercontent.com/arthelokyo/.github/main/resources/astrowind/screenshot-astrowind-readme-fina-v1.png)
-
-[![arthelokyo](https://custom-icon-badges.demolab.com/badge/made%20by%20-arthelokyo-556bf2?style=flat-square&logo=arthelokyo&logoColor=white&labelColor=101827)](https://github.com/arthelokyo)
-[![License](https://img.shields.io/github/license/arthelokyo/astrowind?style=flat-square&color=dddddd&labelColor=000000)](https://github.com/arthelokyo/astrowind/blob/main/LICENSE.md)
-[![Maintained](https://img.shields.io/badge/maintained%3F-yes-brightgreen.svg?style=flat-square)](https://github.com/arthelokyo)
-[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat-square)](https://github.com/arthelokyo/astrowind#contributing)
-[![Known Vulnerabilities](https://snyk.io/test/github/arthelokyo/astrowind/badge.svg?style=flat-square)](https://snyk.io/test/github/arthelokyo/astrowind)
-[![Stars](https://img.shields.io/github/stars/arthelokyo/astrowind.svg?style=social&label=stars&maxAge=86400&color=ff69b4)](https://github.com/arthelokyo/astrowind)
-[![Forks](https://img.shields.io/github/forks/arthelokyo/astrowind.svg?style=social&label=forks&maxAge=86400&color=ff69b4)](https://github.com/arthelokyo/astrowind)
-
-<br>
-
-<details open>
-<summary>Table of Contents</summary>
-
-- [Demo](#demo)
-- [Upcoming: AstroWind 2.0 – We Need Your Vision!](#-upcoming-astrowind-20--we-need-your-vision)
-- [TL;DR](#tldr)
-- [Getting started](#getting-started)
-  - [Project structure](#project-structure)
-  - [Commands](#commands)
-  - [Configuration](#configuration)
-  - [Deploy](#deploy)
-- [Frequently Asked Questions](#frequently-asked-questions)
-- [Contributing](#contributing)
-- [Acknowledgements](#acknowledgements)
-- [License](#license)
-
-</details>
-
-<br>
-
-## Demo
-
-📌 [https://astrowind.vercel.app/](https://astrowind.vercel.app/)
-
-<br>
-
-## 🔔 Upcoming: AstroWind 2.0 – We Need Your Vision!
-
-We're gearing up for **AstroWind 2.0**, and we want it to be shaped by you, our community. Join the discussion and share your ideas, suggestions, and feedback to help us make AstroWind even better.
-
-[Share Your Feedback in Our Discussion!](https://github.com/arthelokyo/astrowind/discussions/392)
-
-<br>
-
-## TL;DR
-
-```shell
-npm create astro@latest -- --template arthelokyo/astrowind
+```txt
+veritus-auto/
 ```
 
-## Getting started
+The repository root is kept clean for project documentation, deployment configuration, and repository-level files.
 
-**AstroWind** tries to give you quick access to creating a website using [Astro v6](https://astro.build/) + [Tailwind CSS v4](https://tailwindcss.com/). It's a free theme which focuses on simplicity, good practices and high performance.
+## Live Site
 
-Very little vanilla javascript is used only to provide basic functionality so that each developer decides which framework (React, Vue, Svelte, Solid JS...) to use and how to approach their goals.
+Deployed on GitHub Pages:
 
-> **Note:** Requires **Node.js >= 22.12.0**. The template currently uses `output: 'static'`, but the blog only works with `prerender = true`.
-
-### Project structure
-
-Inside **AstroWind** template, you'll see the following folders and files:
-
-```
-/
-├── public/
-│   ├── _headers
-│   └── robots.txt
-├── src/
-│   ├── assets/
-│   │   ├── favicons/
-│   │   ├── images/
-│   │   └── styles/
-│   │       └── tailwind.css
-│   ├── components/
-│   │   ├── blog/
-│   │   ├── common/
-│   │   ├── ui/
-│   │   ├── widgets/
-│   │   │   ├── Header.astro
-│   │   │   └── ...
-│   │   ├── CustomStyles.astro
-│   │   ├── Favicons.astro
-│   │   └── Logo.astro
-│   ├── content.config.ts
-│   ├── data/
-│   │   └── post/
-│   │       ├── post-slug-1.md
-│   │       ├── post-slug-2.mdx
-│   │       └── ...
-│   ├── layouts/
-│   │   ├── Layout.astro
-│   │   ├── MarkdownLayout.astro
-│   │   └── PageLayout.astro
-│   ├── pages/
-│   │   ├── [...blog]/
-│   │   │   ├── [category]/
-│   │   │   ├── [tag]/
-│   │   │   ├── [...page].astro
-│   │   │   └── index.astro
-│   │   ├── index.astro
-│   │   ├── 404.astro
-│   │   ├-- rss.xml.ts
-│   │   └── ...
-│   ├── utils/
-│   ├── config.yaml
-│   └── navigation.js
-├── package.json
-├── astro.config.ts
-└── ...
+```txt
+https://vs-scratchpad.github.io/veritus-auto-v2/
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Repository
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory if they do not require any transformation or in the `assets/` directory if they are imported directly.
-
-[![Edit AstroWind on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://githubbox.com/arthelokyo/astrowind/tree/main) [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/arthelokyo/astrowind)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file `README.md`. Update `src/config.yaml` and contents. Have fun!
-
-<br>
-
-### Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command             | Action                                             |
-| :------------------ | :------------------------------------------------- |
-| `npm install`       | Installs dependencies                              |
-| `npm run dev`       | Starts local dev server at `localhost:4321`        |
-| `npm run build`     | Build your production site to `./dist/`            |
-| `npm run preview`   | Preview your build locally, before deploying       |
-| `npm run check`     | Check your project for errors                      |
-| `npm run fix`       | Run Eslint and format codes with Prettier          |
-| `npm run astro ...` | Run CLI commands like `astro add`, `astro preview` |
-
-<br>
-
-### Configuration
-
-Basic configuration file: `./src/config.yaml`
-
-```yaml
-site:
-  name: 'Example'
-  site: 'https://example.com'
-  base: '/' # Change this if you need to deploy to Github Pages, for example
-  trailingSlash: false # Generate permalinks with or without "/" at the end
-
-  googleSiteVerificationId: false # Or some value,
-
-# Default SEO metadata
-metadata:
-  title:
-    default: 'Example'
-    template: '%s — Example'
-  description: 'This is the default meta description of Example website'
-  robots:
-    index: true
-    follow: true
-  openGraph:
-    site_name: 'Example'
-    images:
-      - url: '~/assets/images/default.png'
-        width: 1200
-        height: 628
-    type: website
-  twitter:
-    handle: '@twitter_user'
-    site: '@twitter_user'
-    cardType: summary_large_image
-
-i18n:
-  language: en
-  textDirection: ltr
-
-apps:
-  blog:
-    isEnabled: true # If the blog will be enabled
-    postsPerPage: 6 # Number of posts per page
-
-    post:
-      isEnabled: true
-      permalink: '/blog/%slug%' # Variables: %slug%, %year%, %month%, %day%, %hour%, %minute%, %second%, %category%
-      robots:
-        index: true
-
-    list:
-      isEnabled: true
-      pathname: 'blog' # Blog main path, you can change this to "articles" (/articles)
-      robots:
-        index: true
-
-    category:
-      isEnabled: true
-      pathname: 'category' # Category main path /category/some-category, you can change this to "group" (/group/some-category)
-      robots:
-        index: true
-
-    tag:
-      isEnabled: true
-      pathname: 'tag' # Tag main path /tag/some-tag, you can change this to "topics" (/topics/some-category)
-      robots:
-        index: false
-
-    isRelatedPostsEnabled: true # If a widget with related posts is to be displayed below each post
-    relatedPostsCount: 4 # Number of related posts to display
-
-analytics:
-  vendors:
-    googleAnalytics:
-      id: null # or "G-XXXXXXXXXX"
-
-ui:
-  theme: 'system' # Values: "system" | "light" | "dark" | "light:only" | "dark:only"
+```txt
+https://github.com/vs-scratchpad/veritus-auto-v2
 ```
 
-<br>
+### Root-level files and folders
 
-#### Customize Design
+```txt
+README.md   -> project overview and setup guide
+docs/       -> process, design, QA, and deployment documentation
+.github/    -> GitHub Actions deployment workflow
+.gitignore  -> repository ignore rules
+LICENSE.md  -> license file
+```
 
-With Tailwind CSS v4, all configuration is CSS-first. To customize Font families, Colors or more Elements refer to the following files:
+### Website app folder
 
-- `src/components/CustomStyles.astro` — CSS variables for colors and fonts
-- `src/assets/styles/tailwind.css` — Tailwind theme tokens (`@theme`), custom utilities (`@utility`), and plugins
+```txt
+veritus-auto/
+```
 
-### Deploy
+This contains the actual Astro website project: source code, pages, components, styles, public assets, Astro config, package files, and build tooling.
 
-#### Deploy to production (manual)
+## Project Purpose
 
-You can create an optimized production build with:
+The project has two purposes:
 
-```shell
+1. **Website delivery**  
+   Provide a public static website for Veritus Automation with a premium, minimal, white-first design direction.
+
+2. **Process baseline**  
+   Preserve the repeatable process used to create this kind of website so future static business websites can be produced with less trial-and-error.
+
+## Design Direction
+
+The final design direction is:
+
+- Minimal and white-first
+- Calm, professional, and technical
+- Inspired by the restraint of Apple, OpenAI, Vercel, Linear, and Stripe
+- Text-only `Veritus` wordmark
+- Geist Sans typography
+- Clear CTAs
+- Product/system-style visuals instead of generic stock images
+- Custom automation workspace visual
+- Reusable Veritus component system
+- Static GitHub Pages deployment
+
+## Tech Stack
+
+- Astro 6
+- AstroWind-derived project structure
+- Tailwind CSS 4
+- TypeScript
+- MDX / Markdown content
+- Geist Sans via `@fontsource-variable/geist`
+- GitHub Pages deployment through GitHub Actions
+
+## Main Routes
+
+Primary pages:
+
+```txt
+/               -> Home
+/capabilities   -> Solutions
+/process        -> Process
+/examples       -> Use Cases
+/about          -> Company
+/contact        -> Contact
+```
+
+Secondary pages include:
+
+```txt
+/collateral
+/blog
+/campaigns/sales-automation
+/campaigns/support-automation
+/campaigns/document-processing
+/campaigns/ai-agent-readiness
+/privacy
+/terms
+/404
+```
+
+## Local Setup
+
+```bash
+cd veritus-auto
+```
+
+```bash
+npm install
+```
+
+```bash
+npm run dev
+```
+
+The local site will usually be available at:
+
+```txt
+http://localhost:4321/veritus-auto-v2/
+```
+
+If port `4321` is already in use, Astro may choose another port.
+
+---
+
+# Documentation Guide
+
+The `docs/` folder contains both process documentation and technical documentation.
+
+Recommended reading order:
+
+### 1. Start here
+
+```txt
+docs/veritus-process-index.md
+```
+
+This is the entry point. It explains what the documentation package contains and how to read it.
+
+### 2. Understand the repeatable website process
+
+```txt
+docs/veritus-static-website-delivery-pipeline.md
+```
+
+This is the main process document. Read this to understand how the Veritus website process can be reused for future premium static business websites.
+
+It explains:
+
+- why the early attempts were trial-and-error
+- how references should be studied
+- how to define a design direction
+- how to structure pages
+- how to guide Codex
+- how to run visual QA
+- how to prepare deployment
+
+### 3. Understand the final design baseline
+
+```txt
+docs/veritus-design-baseline.md
+```
+
+This captures the settled visual and UI decisions.
+
+Read this before changing:
+
+- typography
+- logo
+- colors
+- hero section
+- cards
+- CTAs
+- visuals
+- assets
+- dark mode
+- core components
+
+### 4. Understand reference websites
+
+```txt
+docs/veritus-reference-websites.md
+```
+
+This explains which websites influenced the project and how they were used.
+
+References were used for design quality, layout, spacing, typography, and presentation patterns. They were not used for copying content or branding.
+
+### 5. Use the Codex prompt pack
+
+```txt
+docs/prompts/
+```
+
+This folder contains reusable prompts for future website work:
+
+```txt
+00-inspect-and-plan.md
+01-design-direction-contract.md
+02-first-implementation-pass.md
+03-brand-polish-pass.md
+04-visual-system-correction.md
+05-surgical-qa-fix.md
+06-deployment-prep.md
+```
+
+These prompts are intended to guide Codex through a controlled website delivery process instead of using vague instructions like “make it look better.”
+
+### 6. Use the checklists before review or deployment
+
+```txt
+docs/checklists/
+```
+
+Included checklists:
+
+```txt
+visual-qa-checklist.md
+deployment-checklist.md
+handoff-checklist.md
+```
+
+Use these before showing the site to stakeholders or deploying meaningful changes.
+
+### 7. Read the engineering appendix only if needed
+
+```txt
+docs/veritus-engineering-white-paper.md
+```
+
+This is the technical architecture document. It explains how the Astro build, routes, metadata, sitemap, robots file, content, assets, and GitHub Pages deployment work.
+
+Most business or design reviewers do not need to start here.
+
+## Important Project Notes
+
+- The website is static.
+- There is no backend database.
+- The contact form is currently static-compatible.
+- Some business details, address, social links, proof metrics, and service details may be placeholders until approved.
+- The site currently uses `noindex/nofollow` behavior to reduce search visibility until indexing is intentionally enabled.
+- The Astro app is inside `veritus-auto/`, not the repository root.
+- Do not commit `node_modules/`, `dist/`, `.astro/`, or local environment files.
+
+## Useful Commands
+
+Run these from inside the `veritus-auto/` directory:
+
+```bash
+cd veritus-auto
+```
+
+```bash
+npm run dev       # Start local development server
+npm run check     # Run Astro, ESLint, and Prettier checks
+npm run build     # Build static production output
+npm run preview   # Preview production build locally
+npm run fix       # Run formatting/lint fixes where configured
+```
+
+## Recommended Workflow For Future Changes
+
+1. Read `docs/veritus-process-index.md`.
+2. Check `docs/veritus-design-baseline.md` before changing visuals.
+3. Use the relevant prompt from `docs/prompts/` if working with Codex.
+4. Make source changes inside `veritus-auto/`.
+5. Run validation from inside `veritus-auto/`:
+
+```bash
+npm run check
+```
+
+6. For meaningful source changes, also run:
+
+```bash
 npm run build
 ```
 
-Now, your website is ready to be deployed. All generated files are located at
-`dist` folder, which you can deploy the folder to any hosting service you
-prefer.
+7. Use the visual QA checklist before stakeholder review.
+8. Use the deployment checklist before pushing release changes.
+9. Push to `main` and confirm GitHub Actions passes.
 
-#### Deploy to Netlify
+## Current Status
 
-Clone this repository on your own GitHub account and deploy it to Netlify:
+The Veritus Automation website is deployed and the reusable process documentation has been added to the repository.
 
-[![Netlify Deploy button](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/arthelokyo/astrowind)
+The repository has been reorganized so the Astro website project lives in `veritus-auto/`, while the process documentation remains in `docs/` at the repository root.
 
-#### Deploy to Vercel
-
-Clone this repository on your own GitHub account and deploy to Vercel:
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Farthelokyo%2Fastrowind)
-
-#### Deploy to PandaStack
-
-Clone this repository on your own GitHub account and deploy to PandaStack:
-
-[![Deploy to PandaStack](https://dashboard.pandastack.io/deploy-button.svg)](https://dashboard.pandastack.io/deploy?repo=arthelokyo/astrowind&type=static&buildCmd=npm+run+build&outputDir=dist)
-
-<br>
-
-## Frequently Asked Questions
-
-- Why?
--
--
-
-<br>
-
-## Contributing
-
-If you have any ideas, suggestions or find any bugs, feel free to open a discussion, an issue or create a pull request.
-That would be very useful for all of us and we would be happy to listen and take action.
-
-## Acknowledgements
-
-Initially created by **Arthelokyo** and maintained by a community of [contributors](https://github.com/arthelokyo/astrowind/graphs/contributors).
-
-## License
-
-**AstroWind** is licensed under the MIT license — see the [LICENSE](./LICENSE.md) file for details.
+Future work should focus on replacing placeholder business details, approved content, social links, proof points, legal copy, and any final stakeholder-directed design or content changes.

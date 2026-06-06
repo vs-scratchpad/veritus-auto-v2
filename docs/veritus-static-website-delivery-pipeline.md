@@ -603,6 +603,7 @@ Confirm:
 
 Before pushing:
 
+- Run `cd veritus-auto`.
 - Run `npm run check`.
 - Run `npm run build`.
 - Confirm `astro.config` has the correct `site`.

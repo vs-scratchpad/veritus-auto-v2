@@ -1,5 +1,7 @@
 # Veritus Automation Static Website Process Report
 
+> Historical note: this report records an earlier project state. The current Astro app lives in `veritus-auto/`, and the current GitHub Pages base is `/veritus-auto-v2`.
+
 ## Executive Summary
 
 Veritus Automation is a static marketing website built with Astro, AstroWind, Tailwind CSS, and GitHub Pages. The project originated from a management request to explore static site generators, specifically Astro, and produce a polished, low-cost/free hosted website for the Veritus brand.

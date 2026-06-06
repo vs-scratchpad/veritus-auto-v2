@@ -36,7 +36,7 @@ Use this when handing a static business website to the business owner, reviewer,
 
 ## Operations
 
-- Document how to run locally.
+- Document how to run locally from `veritus-auto/`.
 - Document how to validate.
 - Document how deployment works.
 - Document who owns future content changes.

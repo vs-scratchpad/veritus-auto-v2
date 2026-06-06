@@ -1,5 +1,7 @@
 # Veritus Automation Project Context
 
+> Current repository note: the Astro website project now lives in `veritus-auto/`. Historical references to `src/`, `public/`, `astro.config.ts`, or package scripts in this document refer to files inside `veritus-auto/` unless otherwise stated.
+
 ## Purpose
 
 Veritus Automation is a demo/static marketing website for a professional AI automation company. The project uses AstroWind, Astro, and Tailwind CSS to build a polished public site that can later be hosted for free on GitHub Pages.

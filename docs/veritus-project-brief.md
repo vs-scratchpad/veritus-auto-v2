@@ -1,5 +1,7 @@
 # Veritus Automation Project Brief
 
+> Current repository note: the Astro website project now lives in `veritus-auto/`. Historical references to `src/`, `public/`, `astro.config.ts`, or package scripts in this brief refer to files inside `veritus-auto/` unless otherwise stated.
+
 ## Project Goal
 
 Build a professional static marketing website for Veritus Automation using AstroWind, Astro, and Tailwind CSS.

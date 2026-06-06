@@ -30,6 +30,7 @@ base: '/veritus-auto-v2';
 The relevant project roots are:
 
 ```txt
+veritus-auto/
 astro.config.ts
 src/config.yaml
 src/pages/
@@ -44,6 +45,8 @@ vendor/integration/
 .agents/skills/
 .github/workflows/deploy.yml
 ```
+
+After the repository restructure, app paths in this appendix are relative to `veritus-auto/` unless they explicitly refer to repository-root files such as `docs/`, `README.md`, `.github/`, or `.gitignore`.
 
 The site is static. There is no server-side runtime API, no database, and no live form submission backend in the inspected project.
 

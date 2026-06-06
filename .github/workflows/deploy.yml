@@ -21,10 +21,28 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6
 
-      - name: Install, build, and upload site
-        uses: withastro/action@v6
+      - name: Setup Node
+        uses: actions/setup-node@v6
         with:
-          node-version: 24
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: veritus-auto/package-lock.json
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: veritus-auto
+
+      - name: Build site
+        run: npm run build
+        working-directory: veritus-auto
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: veritus-auto/dist
 
   deploy:
     needs: build

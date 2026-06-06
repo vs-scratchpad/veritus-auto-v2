@@ -101,7 +101,7 @@ Each primary page should have a distinct job and rhythm. Avoid making every page
 
 ## Core Components
 
-Core Veritus components live in `src/components/veritus/`:
+Core Veritus components live in `veritus-auto/src/components/veritus/`:
 
 - `SiteHeader.astro`
 - `SiteFooter.astro`
@@ -123,17 +123,17 @@ Core Veritus components live in `src/components/veritus/`:
 
 Global layout and metadata live in:
 
-- `src/layouts/`
-- `src/components/common/`
-- `src/components/CustomStyles.astro`
-- `src/assets/styles/tailwind.css`
+- `veritus-auto/src/layouts/`
+- `veritus-auto/src/components/common/`
+- `veritus-auto/src/components/CustomStyles.astro`
+- `veritus-auto/src/assets/styles/tailwind.css`
 
 ## Asset Locations
 
-- Main public images: `public/assets/images/`
-- Tool and logo SVGs: `public/assets/logos/`
-- Favicons: `src/assets/favicons/`
-- Default OpenGraph image: `src/assets/images/default.png`
+- Main public images: `veritus-auto/public/assets/images/`
+- Tool and logo SVGs: `veritus-auto/public/assets/logos/`
+- Favicons: `veritus-auto/src/assets/favicons/`
+- Default OpenGraph image: `veritus-auto/src/assets/images/default.png`
 
 Use base-safe helpers for public assets and internal links when editing source.
 
