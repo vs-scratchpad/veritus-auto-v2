@@ -1,0 +1,213 @@
+//this is the first and only prompt given to codex for a test drill 
+
+PROMPT :
+
+You are working in a fresh repository named `app_test`.
+
+This is a process validation drill.
+
+The repository currently contains only:
+
+```txt
+docs/
+.gitignore
+```
+
+The goal is to test whether the Veritus static website delivery process documented in `docs/` is strong enough to guide a new website build from scratch.
+
+You must build a fresh Veritus Automation static website using the documented pipeline.
+
+Important:
+This is not a pixel-perfect clone of a previous website. This is a practical test of the documented process. The output should follow the documented Veritus business direction, design baseline, page structure, implementation rules, QA expectations, and deployment assumptions.
+
+Do not ask for repeated manual approval. Execute the pipeline end-to-end.
+
+Read these documents first and treat them as source of truth:
+
+1. `docs/veritus-process-index.md`
+2. `docs/veritus-static-website-delivery-pipeline.md`
+3. `docs/veritus-design-baseline.md`
+4. `docs/veritus-reference-websites.md`
+5. `docs/veritus-project-brief.md`
+6. `docs/project-context.md`
+7. `docs/checklists/visual-qa-checklist.md`
+8. `docs/checklists/deployment-checklist.md`
+9. `docs/prompts/00-inspect-and-plan.md`
+10. `docs/prompts/01-design-direction-contract.md`
+11. `docs/prompts/02-first-implementation-pass.md`
+12. `docs/prompts/03-brand-polish-pass.md`
+13. `docs/prompts/04-visual-system-correction.md`
+14. `docs/prompts/05-surgical-qa-fix.md`
+15. `docs/prompts/06-deployment-prep.md`
+
+Use `docs/veritus-engineering-white-paper.md` only as a technical appendix when Astro architecture, build, metadata, sitemap, robots, assets, or GitHub Pages deployment details are needed.
+
+Your task:
+
+Create a complete Astro static website project inside:
+
+```txt
+veritus-auto/
+```
+
+Keep `docs/` at the repository root.
+
+Required final structure:
+
+```txt
+app_test/
+  README.md
+  .gitignore
+  docs/
+  veritus-auto/
+    package.json
+    package-lock.json
+    astro.config.ts
+    src/
+    public/
+```
+
+Website requirements:
+
+1. Build a Veritus Automation static marketing website.
+2. Use Astro.
+3. Use a modern CSS setup. Tailwind is preferred if practical.
+4. Use Geist Sans or a close equivalent.
+5. Use a text-only `Veritus` wordmark.
+6. Follow the documented white-first, minimal, premium, calm, technical design baseline.
+7. Use a centered first-viewport hero with text only.
+8. Reveal the Veritus automation workspace or system visual in the section after the hero.
+9. Use product/interface/system visuals instead of stock photos.
+10. Avoid generic stock people, robots, AI hands, neon effects, random diagrams, fake clients, fake testimonials, fake awards, and vague AI hype.
+11. Use restrained motion and hover states.
+12. Keep the site static.
+13. Preserve noindex/nofollow unless the docs say otherwise.
+14. Create realistic placeholder content based on the Veritus positioning.
+
+Required pages:
+
+```txt
+/               Home
+/capabilities   Solutions
+/process        Process
+/examples       Use Cases
+/about          Company
+/contact        Contact
+/collateral     Collateral
+/privacy        Privacy
+/terms          Terms
+/404            Not Found
+```
+
+Optional if practical:
+
+```txt
+/blog
+/campaigns/sales-automation
+/campaigns/support-automation
+/campaigns/document-processing
+/campaigns/ai-agent-readiness
+```
+
+Content direction:
+
+Use concrete language around:
+
+* AI automation systems
+* custom software projects
+* automated pipeline solutions
+* business workflows
+* tool handoffs
+* approvals
+* CRM updates
+* document processing
+* support queues
+* internal dashboards
+* human review
+* audit trails
+* system updates
+
+Avoid generic language like:
+
+* “revolutionize your business”
+* “unlock the power of AI”
+* “next generation solutions”
+* “trusted by leading companies” unless real proof exists
+
+Implementation requirements:
+
+1. Create reusable components where sensible.
+2. Keep the codebase clean and understandable.
+3. Use local assets or CSS/SVG/HTML visuals. Do not hotlink random external images.
+4. If using tool logos, keep them local or use consistent placeholders. Do not call them “Trusted by.”
+5. Create or update root `README.md` to explain:
+
+   * what the project is
+   * repo structure
+   * live/deployment assumption
+   * how to run locally from `veritus-auto/`
+   * docs reading order
+   * validation commands
+
+Deployment assumptions:
+
+Prepare for GitHub Pages-style deployment but do not push anything.
+
+Use:
+
+```ts
+site: 'https://vs-scratchpad.github.io'
+base: '/veritus-auto-v2'
+```
+
+Create a root GitHub Actions workflow if appropriate:
+
+```txt
+.github/workflows/deploy.yml
+```
+
+It should build from `veritus-auto/`.
+
+Validation:
+
+After implementation, run:
+
+```bash
+cd veritus-auto
+npm install
+npm run check
+npm run build
+```
+
+If `npm run check` does not exist initially, add appropriate check scripts or clearly explain the substitute validation.
+
+Fix all validation/build failures.
+
+Process report:
+
+Create a short drill report at:
+
+```txt
+docs/veritus-process-drill-report.md
+```
+
+The report should explain:
+
+1. Which docs were used.
+2. Which pipeline stages were executed.
+3. What was created.
+4. Where the process worked well.
+5. Where the process was unclear or incomplete.
+6. Any assumptions made.
+7. Any recommendations to improve the process docs.
+
+Final response must include:
+
+* files/folders created
+* pages created
+* components created
+* design baseline decisions applied
+* validation results
+* remaining risks
+* whether the process package was sufficient
+* any documentation gaps discovered
